@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Search Job - Login Account</title>
+</head>
+<body>
+<div >
+    <div>
+        <div>
+            <img src=""/>
+            <span>
+                <a href="#">Home Page</a>
+            </span>
+        </div>
+        <div>
+                <span>
+                    <a href="">Search Job</a>
+                </span>
+        </div>
+        <div th:switch="${role}">
+                <span th:case="ADMIN">
+                    <a href="/home-fe/admin">Admin Area</a>
+                </span>
+        </div>
+        <div th:switch="${account_login}">
+            <span th:case="null">
+                <a href="/home-fe/login">Login</a>
+            </span>
+            <span th:case="*">
+                <a href="/home-fe/logout">Logout</a>
+            </span>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Login</title>
+    <link rel="stylesheet" type="text/css" href="/styles/login.css">
+</head>
+<body>
+<div>
+    <h1 class="header">Login Account</h1>
+    <form action="/auth-fe/login" method="post" id="formLogin">
+        <div class="email">
+            <label class="textEmail">Email:</label>
+            <input name="inputEmail" type="email" required/>
+        </div>
+        <div class="password">
+            <label class="textPassword">Password:</label>
+            <input name="inputPassword" type="password" required/>
+        </div>
+        <div class="forgot-register">
+            <a class="forgot" href="/home-fe/forgot-pass">Forgot Password?</a>
+            <a class="signUp" href="/home-fe/signup">Sign Up</a>
+        </div>
+        <div>
+            <button type="submit" id="loginBtn">Login</button>
+        </div>
+    </form>
+</div>
+</body>
+</html>

@@ -1,0 +1,83 @@
+body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+    background-color: #E7F5DC;
+    color: #213A58;
+}
+.header {
+    text-align: center;
+    font-size: 30px;
+    font-weight: bold;
+}
+#formLogin {
+    width: 450px;
+    height: 300px;
+    margin: 30px auto;
+    border: 2px solid #ccc;
+    border-radius: 20px;
+    text-align: center;
+    background-color: whitesmoke;
+}
+
+.email {
+    margin-top: 20px;
+}
+
+.textEmail {
+    font-size: 20px;
+    font-weight: bold;
+    margin-right: 60px;
+}
+
+.password {
+    margin-top: 20px;
+}
+
+.textPassword {
+    font-size: 20px;
+    font-weight: bold;
+    margin-right: 20px;
+}
+
+input {
+    width: 200px;
+    height: 40px;
+    margin-bottom: 10px;
+    border-radius: 20px;
+    border: 1px solid gray;
+    padding-left: 20px;
+    font-size: 15px;
+}
+
+.forgot-register {
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-around;
+}
+
+.forgot {
+    font-size: 15px;
+    color: #213A58;
+    text-decoration: none;
+}
+
+.signUp {
+    font-weight: bold;
+    font-size: 15px;
+    color: #213A58;
+    text-decoration: none;
+}
+
+#loginBtn {
+    margin-top: 20px;
+    width: 220px;
+    height: 40px;
+    border: none;
+    border-radius: 20px;
+    font-size: 20px;
+    background-color: #213A58;
+    color: #cccccc;
+    cursor: pointer;
+}
