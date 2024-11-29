@@ -21,7 +21,7 @@ public class AdminHomeController {
 
     @GetMapping("/skill")
     public ModelAndView directToSkillManagement(ModelAndView mv) {
-        mv.addObject("skillTytes", Arrays.stream(SkillType.values()).toList());
+        mv.addObject("skillTypes", Arrays.stream(SkillType.values()).toList());
         mv.addObject("skills", ahm.getAllSkills());
         mv.setViewName("admin/skill");
         return mv;
