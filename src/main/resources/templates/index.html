@@ -18,15 +18,10 @@
                     <a href="">Search Job</a>
                 </span>
         </div>
-        <div th:switch="${account_login}">
-            <!--                <span th:case="ADMIN">-->
-            <!--                    <a href="/home-fe/admin">Admin Area</a>-->
-            <!--                </span>-->
-            <span th:case="null">
-            </span>
-            <span th:case="*">
-                <a href="/home-fe/admin">Admin Area</a>
-            </span>
+        <div th:switch="${role}">
+                <span th:case="ADMIN">
+                    <a href="/home-fe/admin" >Admin Area</a>
+                </span>
         </div>
         <div th:switch="${account_login}">
             <span th:case="null">
