@@ -6,6 +6,7 @@ import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;
 import vn.edu.iuh.fit.lab_5.backend.models.Candidate;
+import vn.edu.iuh.fit.lab_5.backend.models.Job;
 import vn.edu.iuh.fit.lab_5.backend.models.Response;
 import vn.edu.iuh.fit.lab_5.backend.models.Skill;
 
@@ -33,6 +34,16 @@ public class AdminHomeModel {
 
         Response response = rt.getForObject(URI.create(uri + "candidate"), Response.class);
         result = mapper.convertValue(response.getData(), new TypeReference<List<Candidate>>() {
+        });
+
+        return result;
+    }
+
+    public List<Job> getAllJobs() {
+        List<Job> result = null;
+
+        Response response = rt.getForObject(URI.create(uri + "job"), Response.class);
+        result = mapper.convertValue(response.getData(), new TypeReference<List<Job>>() {
         });
 
         return result;
