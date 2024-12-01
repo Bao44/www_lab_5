@@ -2,34 +2,46 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Search Job - Login Account</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+          integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+          crossorigin="anonymous" referrerpolicy="no-referrer"/>
+    <link rel="stylesheet" href="/styles/index.css">
 </head>
+
 <body>
-<div>
+
+<header>
     <div>
-        <div>
-            <img src=""/>
-            <span>
-                <a href="#">Home Page</a>
+        <a href="#">
+            <img src="/styles/images/logo.jpg" alt="Logo">
+        </a>
+    </div>
+    <nav>
+        <span class="search-container">
+            <input type="text" placeholder="Search..." class="search-input">
+            <i class="fa-solid fa-magnifying-glass search-icon"></i>
+        </span>
+        <span>
+            <a href="/home-fe/search">Search Job</a>
+        </span>
+        <span th:switch="${role}">
+            <span th:case="ADMIN">
+                <a href="/home-fe/admin">Admin Area</a>
             </span>
-        </div>
-        <div>
-                <span>
-                    <a href="">Search Job</a>
-                </span>
-        </div>
-        <div th:switch="${role}">
-                <span th:case="ADMIN">
-                    <a href="/home-fe/admin" >Admin Area</a>
-                </span>
-        </div>
-        <div th:switch="${account_login}">
+        </span>
+        <span th:switch="${account_login}">
             <span th:case="null">
                 <a href="/home-fe/login">Login</a>
             </span>
             <span th:case="*">
                 <a href="/home-fe/logout">Logout</a>
             </span>
-        </div>
-    </div>
-</div>
+        </span>
+    </nav>
+
+</header>
+
+</body>
+</html>
