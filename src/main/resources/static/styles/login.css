@@ -81,3 +81,8 @@ input {
     color: #cccccc;
     cursor: pointer;
 }
+
+#loginBtn:hover {
+    background: #073A4B;
+    box-shadow: 0 4px 10px rgba(0, 91, 179, 0.3);
+}
