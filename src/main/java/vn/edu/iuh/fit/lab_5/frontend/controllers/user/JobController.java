@@ -1,6 +1,5 @@
 package vn.edu.iuh.fit.lab_5.frontend.controllers.user;
 
-import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -12,16 +11,16 @@ import vn.edu.iuh.fit.lab_5.frontend.models.JobModel;
 import java.util.List;
 
 @Controller
-@RequestMapping("/user-fe/job")
+@RequestMapping("user-fe/search-job")
 public class JobController {
     @Autowired
     private JobModel jm;
 
     @GetMapping("/job")
-    public ModelAndView getAllJobs(ModelAndView mv, HttpServletRequest request) {
-        List<Job> jobs = jm.getAllJob();
-        mv.addObject("job", jobs);
-        mv.setViewName("home");
+    public ModelAndView getAllJobs(ModelAndView mv) {
+        List<Job> jobs = jm.getAllJobs();
+        mv.addObject("jobs", jobs);
+        mv.setViewName("user/search-job");
         return mv;
     }
 }

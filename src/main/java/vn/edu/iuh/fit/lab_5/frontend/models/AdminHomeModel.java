@@ -38,14 +38,4 @@ public class AdminHomeModel {
 
         return result;
     }
-
-    public List<Job> getAllJobs() {
-        List<Job> result = null;
-
-        Response response = rt.getForObject(URI.create(uri + "job"), Response.class);
-        result = mapper.convertValue(response.getData(), new TypeReference<List<Job>>() {
-        });
-
-        return result;
-    }
 }

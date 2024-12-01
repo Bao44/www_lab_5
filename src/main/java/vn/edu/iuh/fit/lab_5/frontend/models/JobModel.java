@@ -17,7 +17,7 @@ public class JobModel {
     private final String uri = "http://localhost:8080/api/job";
     private final ObjectMapper mapper = new ObjectMapper();
 
-    public List<Job> getAllJob() {
+    public List<Job> getAllJobs() {
         Response response = rt.getForObject(URI.create(uri), Response.class);
         return mapper.convertValue(response.getData(), new TypeReference<List<Job>>() {
         });

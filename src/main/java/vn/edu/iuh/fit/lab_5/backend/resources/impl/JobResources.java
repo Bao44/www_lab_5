@@ -2,6 +2,7 @@ package vn.edu.iuh.fit.lab_5.backend.resources.impl;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import vn.edu.iuh.fit.lab_5.backend.models.Job;
@@ -12,7 +13,7 @@ import vn.edu.iuh.fit.lab_5.backend.services.JobServices;
 import java.util.List;
 
 @RestController
-@RequestMapping("api/jobs")
+@RequestMapping("api/job")
 @Slf4j
 public class JobResources implements IManagement<Job,Long> {
 
@@ -51,6 +52,11 @@ public class JobResources implements IManagement<Job,Long> {
     @GetMapping
     @Override
     public ResponseEntity<Response> getAll() {
-        return null;
+        log.info("Calling get all jobs");
+        return ResponseEntity.ok(new Response(
+                HttpStatus.OK.value(),
+                "Get all jobs successfully",
+                js.getAll()
+        ));
     }
 }

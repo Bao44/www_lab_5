@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("/home-fe")
 public class HomeController {
 
-    @GetMapping("/user")
+    @GetMapping("/search")
     public String directToSearchPage() {
         return "user/search-job";
     }
