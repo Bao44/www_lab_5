@@ -9,11 +9,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("/home-fe")
 public class HomeController {
 
-    @GetMapping("/search")
-    public String directToSearchPage() {
-        return "user/search-job";
-    }
-
     @GetMapping("/admin")
     public String directToAdminPage() {
         return "admin/admin-home";
