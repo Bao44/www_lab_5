@@ -4,23 +4,26 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Job Detail</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+          integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+          crossorigin="anonymous" referrerpolicy="no-referrer"/>
+    <link rel="stylesheet" href="/styles/job-detail.css">
 </head>
 <body>
-<div>
-    <h2>Job Skills</h2>
-    <ul>
-        <li th:each="jobSkill : ${jobSkills}">
-            <p><strong>Job Name:</strong> <span th:text="${jobSkill.id.job.jobName}"></span></p>
+<div class="container">
+    <h1>Job Skills</h1>
+    <div class="job-detail" th:each="jobSkill : ${jobSkills}">
+        <div class="job-card">
+            <h2 th:text="${jobSkill.id.job.jobName}"></h2>
             <p><strong>Job Description:</strong> <span th:text="${jobSkill.id.job.jobDesc}"></span></p>
             <p><strong>Company:</strong> <span th:text="${jobSkill.id.job.company.getCompName()}"></span></p>
-            <p><strong>Description:</strong> <span th:text="${jobSkill.moreInfos}"></span></p>
+            <p><strong>Additional Info:</strong> <span th:text="${jobSkill.moreInfos}"></span></p>
             <p><strong>Skill Level:</strong> <span th:text="${jobSkill.skillLevel}"></span></p>
-        </li>
-    </ul>
+        </div>
+    </div>
 </div>
-
 <div class="footer">
-    &copy; 2024 Search Dashboard - All Rights Reserved.
+    &copy; 2024 Search-Job-Detail Dashboard - All Rights Reserved.
 </div>
 </body>
 </html>
