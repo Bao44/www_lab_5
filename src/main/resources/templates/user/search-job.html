@@ -29,7 +29,8 @@
         </thead>
         <tbody>
         <tr th:each="job : ${jobs}">
-            <td th:text="${job.id}"></td>
+<!--            <td th:text="${job.id}"></td>-->
+            <td><a th:href="@{/user-fe/job-skill/detail/skills/{id}(id=${job.id})}" th:text="${job.id}"></a></td>
             <td th:text="${job.jobDesc}"></td>
             <td th:text="${job.jobName}"></td>
             <td th:text="${job.company.getCompName()}"></td>

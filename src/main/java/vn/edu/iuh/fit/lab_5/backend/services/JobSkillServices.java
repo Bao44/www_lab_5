@@ -47,4 +47,8 @@ public class JobSkillServices {
     public List<JobSkill> getAllJobsBySkill(Long skillId) {
         return jsr.findById_Skill_Id(skillId);
     }
+
+    public List<JobSkill> getAllSkillsByJob(Long jobId) {
+        return jsr.findById_Job_Id(jobId);
+    }
 }
