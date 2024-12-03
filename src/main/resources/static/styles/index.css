@@ -1,45 +1,166 @@
-body {
-    font-family: Arial, sans-serif;
+/* Reset */
+body, h1, h2, h3, h4, p, ul, ol, a {
     margin: 0;
     padding: 0;
+    list-style: none;
+    text-decoration: none;
+    font-family: 'Arial', sans-serif;
+    box-sizing: border-box;
 }
 
+body {
+    background: linear-gradient(120deg, #f8f9fa, #e9ecef);
+    color: #213A58;
+}
+
+/* Header */
 header {
-    background-color: #f4f4f4;
+    background-color: #213A58;
     padding: 15px 20px;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    border-bottom: 1px solid #ddd;
+    color: #FFF;
 }
 
-header img {
-    height: 60px;
-    width: auto;
-    border-radius: 50%;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s, box-shadow 0.3s;
-}
-
-header img:hover {
-    transform: scale(1.1);
-    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
-}
-
-header nav {
+.header-container {
     display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.logo {
+    width: 80px;
+    height: auto;
+    border-radius: 50%;
+}
+
+.nav-bar a {
+    color: #FFF;
+    margin-left: 15px;
+    font-weight: bold;
+    font-size: 1rem;
+    transition: color 0.3s ease;
+}
+
+.nav-bar a:hover {
+    color: #0056b3;
+}
+
+/* Main Section */
+main {
+    padding: 20px;
+}
+
+.skills-section {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.skills-section h3 {
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+    color: #213A58;
+}
+
+.skills-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15px;
+}
+
+.skill-item {
+    display: inline-block;
+    padding: 12px 20px;
+    background-color: #213A58;
+    color: #FFF;
+    border-radius: 30px;
+    font-size: 1rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.skill-item:hover {
+    background-color: #0056b3;
+    transform: scale(1.1);
+}
+
+/* Jobs Section */
+.jobs-section {
+    text-align: center;
+}
+
+.jobs-section h4 {
+    font-size: 1.3rem;
+    margin-bottom: 20px;
+}
+
+.table-wrapper {
+    overflow-x: auto;
+    margin: 0 auto;
+    max-width: 100%;
+}
+
+.jobs-table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: #FFF;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-bottom: 30px;
+}
+
+.jobs-table th, .jobs-table td {
+    padding: 12px 15px;
+    text-align: left;
+    border: 1px solid #ddd;
+}
+
+.jobs-table th {
+    background-color: #213A58;
+    color: #FFF;
+    text-transform: uppercase;
+    font-size: 0.9rem;
+}
+
+.jobs-table tr:hover {
+    background-color: #F1F3F8;
+}
+
+/* Footer */
+footer {
+    background-color: #f8f9fa;
+    color: #6c757d  ;
+    padding: 20px 10px;
+    text-align: center;
+    font-size: 0.9rem;
+}
+
+.footer-container {
+    display: flex;
+    flex-direction: column;
     align-items: center;
 }
 
-header nav a {
-    margin: 0 10px;
-    text-decoration: none;
-    color: #333;
+.footer-name p {
     font-weight: bold;
-    transition: color 0.3s, text-decoration 0.3s;
+    margin-bottom: 10px;
 }
 
-header nav a:hover {
-    color: #007bff;
+.footer-links {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 10px;
 }
 
+.footer-links a {
+    color: #6c757d;
+    font-size: 0.9rem;
+    transition: color 0.3s ease;
+}
+
+.footer-links a:hover {
+    color: #0056b3;
+}

@@ -10,6 +10,7 @@ import org.springframework.web.servlet.ModelAndView;
 import vn.edu.iuh.fit.lab_5.backend.models.Address;
 import vn.edu.iuh.fit.lab_5.backend.models.Candidate;
 import vn.edu.iuh.fit.lab_5.frontend.models.AuthenticateModel;
+import vn.edu.iuh.fit.lab_5.frontend.models.JobSkillModel;
 import vn.edu.iuh.fit.lab_5.frontend.models.SkillModel;
 
 import java.time.LocalDate;
@@ -31,12 +32,12 @@ public class AuthenticateController {
             HttpServletRequest request
     ) {
         ModelAndView mv = new ModelAndView("index");
-        Candidate candidate = am.checkLogin(email, password);
-        request.getServletContext().setAttribute("account_login", candidate);
-        request.getServletContext().setAttribute("role", candidate.getRole().toString());
+        Candidate target = am.checkLogin(email, password);
+        request.getServletContext().setAttribute("account_login", target);
+        request.getServletContext().setAttribute("role", target.getRole().toString());
         request.getServletContext().setAttribute("skills", skillModel.getAllSkills());
-        mv.addObject("role", candidate.getRole().toString());
-        mv.addObject("account_login", candidate);
+        mv.addObject("role", target.getRole().toString());
+        mv.addObject("account_login", target);
         mv.addObject("skills", skillModel.getAllSkills());
         return mv;
     }

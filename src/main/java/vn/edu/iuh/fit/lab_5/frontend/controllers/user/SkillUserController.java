@@ -32,7 +32,7 @@ public class SkillUserController {
         mv.addObject("account_login", candidate);
         mv.addObject("skills", skills);
         mv.addObject("jobSkills", jobSkills);
-        mv.setViewName("home");
+        mv.setViewName("index");
         return mv;
     }
 }
