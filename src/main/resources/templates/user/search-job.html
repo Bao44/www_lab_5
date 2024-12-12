@@ -12,12 +12,16 @@
 <body>
 <div class="container">
     <h1>Search Job</h1>
+
     <div class="search-container">
-        <input name="searchJob" type="text" placeholder="Search for jobs..." class="search-input">
-        <button class="search-button">
-            <i class="fa-solid fa-magnifying-glass"></i>
-        </button>
+        <form action="/api/job/search" method="get">
+            <input name="search" id="searchInput" type="text" placeholder="Search for jobs..." class="search-input">
+            <button id="searchButton" class="search-button">
+                <i class="fa-solid fa-magnifying-glass"></i>
+            </button>
+        </form>
     </div>
+
     <table>
         <thead>
         <tr>

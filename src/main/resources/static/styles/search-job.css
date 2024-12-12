@@ -26,12 +26,13 @@ h1 {
 .search-container {
     display: flex;
     justify-content: center;
+    align-items: center;  /* Căn giữa các phần tử theo chiều dọc */
+    gap: 10px;  /* Khoảng cách giữa input và button */
     margin-bottom: 30px;
-    gap: 10px;
 }
 
 .search-input {
-    width: 70%;
+    width: 70%; /* Chiếm 70% chiều rộng */
     padding: 12px 20px;
     border: 2px solid #dee2e6;
     border-radius: 25px;
@@ -39,15 +40,11 @@ h1 {
     outline: none;
     transition: all 0.3s ease;
     box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
-}
-
-.search-input:focus {
-    border-color: #213A58;
-    box-shadow: 0 4px 10px rgba(0, 123, 255, 0.3);
+    box-sizing: border-box;  /* Đảm bảo padding không làm thay đổi kích thước */
 }
 
 .search-button {
-    padding: 10px 20px;
+    padding: 12px 20px;  /* Giữ padding giống với input để đảm bảo căn chỉnh đều */
     background: #213A58;
     border: none;
     color: #fff;
@@ -131,5 +128,3 @@ tr:hover td {
     transform: translateY(-3px);
     box-shadow: 0 4px 15px rgba(0, 91, 179, 0.2);
 }
-
-

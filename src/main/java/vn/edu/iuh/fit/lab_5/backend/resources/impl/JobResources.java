@@ -59,4 +59,25 @@ public class JobResources implements IManagement<Job,Long> {
                 js.getAll()
         ));
     }
+
+    @GetMapping("/search")
+    public ResponseEntity<Response> searchJobs(@RequestParam(value = "search", required = false) String searchTerm) {
+        List<Job> jobs;
+
+        if (searchTerm != null && !searchTerm.trim().isEmpty()) {
+            // Tìm kiếm công việc theo tên hoặc tên công ty
+            jobs = js.search(searchTerm, searchTerm);
+        } else {
+            // Nếu không tìm kiếm, lấy tất cả công việc
+            jobs = (List<Job>) js.getAll();
+        }
+
+        System.out.println("Jobs after search: " + jobs.size());
+        return ResponseEntity.ok(new Response(
+                HttpStatus.OK.value(),
+                "Get jobs successfully",
+                jobs
+        ));
+    }
+
 }

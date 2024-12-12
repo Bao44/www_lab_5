@@ -42,4 +42,8 @@ public class JobServices {
     public Iterator<Job> getAll() {
         return jr.findAll().iterator();
     }
+
+    public List<Job> search(String jobName, String companyName) {
+        return jr.findByJobNameContainingOrCompanyNameContaining(jobName, companyName);
+    }
 }
