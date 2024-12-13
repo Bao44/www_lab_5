@@ -19,13 +19,18 @@ public class AuthenticateModel {
     private RestTemplate rt = new RestTemplate();
     private final String uri = "http://localhost:8080/api/";
 
-    public Candidate checkLogin(String email, String passowrd) {
+    public Candidate checkLogin(String email, String password) {
         Candidate candidate = null;
-        CandidateAccountDTO dto = new CandidateAccountDTO(email, passowrd);
+        CandidateAccountDTO dto = new CandidateAccountDTO(email, password);
         Response response = rt.postForObject(URI.create(uri + "candidate/login"), dto, Response.class);
         candidate = mapper.convertValue(response.getData(), new TypeReference<>() {
         });
         return candidate;
+    }
+
+    public Candidate getCandidate(Long id) {
+        Response response = rt.getForObject(URI.create(uri + "candidate/" + id), Response.class);
+        return mapper.convertValue(response.getData(), Candidate.class);
     }
 
     public Address registerAddress(Address address) {

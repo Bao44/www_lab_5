@@ -1,4 +1,4 @@
-package vn.edu.iuh.fit.lab_5.frontend.controllers.admin;
+package vn.edu.iuh.fit.lab_5.frontend.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -7,10 +7,13 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 import vn.edu.iuh.fit.lab_5.backend.models.Candidate;
+import vn.edu.iuh.fit.lab_5.backend.models.CandidateSkill;
 import vn.edu.iuh.fit.lab_5.frontend.models.CandidateModel;
 
+import java.util.List;
+
 @Controller
-@RequestMapping("/admin-fe/candidate/detail")
+@RequestMapping("/candidate/detail")
 public class CandidateController {
 
     @Autowired
@@ -19,6 +22,16 @@ public class CandidateController {
     @GetMapping("{id}")
     public ModelAndView getCandidateDetail(@PathVariable("id") Long id) {
         ModelAndView mv = new ModelAndView("admin/candidate/candidate-detail");
+        Candidate target = cm.getCandidateDetail(id);
+        mv.addObject("candidate", target);
+        mv.addObject("candidate_skills", cm.getCandidateSkill(id));
+        mv.addObject("candidate_experiences", cm.getCandidateExperiences(id));
+        return mv;
+    }
+
+    @GetMapping("/profile/{id}")
+    public ModelAndView getCandidate(@PathVariable("id") Long id) {
+        ModelAndView mv = new ModelAndView("profile");
         Candidate target = cm.getCandidateDetail(id);
         mv.addObject("candidate", target);
         mv.addObject("candidate_skills", cm.getCandidateSkill(id));

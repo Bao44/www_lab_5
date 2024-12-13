@@ -10,6 +10,7 @@ import org.springframework.web.servlet.ModelAndView;
 import vn.edu.iuh.fit.lab_5.backend.models.Address;
 import vn.edu.iuh.fit.lab_5.backend.models.Candidate;
 import vn.edu.iuh.fit.lab_5.frontend.models.AuthenticateModel;
+import vn.edu.iuh.fit.lab_5.frontend.models.CandidateModel;
 import vn.edu.iuh.fit.lab_5.frontend.models.JobSkillModel;
 import vn.edu.iuh.fit.lab_5.frontend.models.SkillModel;
 
@@ -24,6 +25,8 @@ public class AuthenticateController {
     private AuthenticateModel authenticateModel;
     @Autowired
     private SkillModel skillModel;
+    @Autowired
+    private CandidateModel candidateModel;
 
     @PostMapping("/login")
     public ModelAndView checkLogin(
@@ -33,6 +36,14 @@ public class AuthenticateController {
     ) {
         ModelAndView mv = new ModelAndView("index");
         Candidate target = am.checkLogin(email, password);
+
+        if(target != null) {
+            Candidate id = candidateModel.getCandidateDetail(target.getId());
+            Candidate candidate = authenticateModel.getCandidate(id.getId());
+            request.getServletContext().setAttribute("candidate", candidate);
+            mv.addObject("candidate", candidate);
+        }
+
         request.getServletContext().setAttribute("account_login", target);
         request.getServletContext().setAttribute("role", target.getRole().toString());
         request.getServletContext().setAttribute("skills", skillModel.getAllSkills());

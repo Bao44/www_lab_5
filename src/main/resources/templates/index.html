@@ -19,6 +19,10 @@
                 <span th:switch="${role}">
                     <a th:case="ADMIN" href="/home-fe/admin">Admin Area</a>
                 </span>
+                <span th:if="${account_login != null}">
+                    <a th:href="@{'/candidate/detail/profile/' + ${candidate.id}}"
+                       th:text="${candidate.getFullName()}"></a>
+                </span>
                 <span th:switch="${account_login}">
                     <a th:case="null" href="/home-fe/login">Login</a>
                     <a th:case="*" href="/home-fe/logout">Logout</a>
