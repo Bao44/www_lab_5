@@ -17,55 +17,57 @@
             <nav class="nav-bar">
                 <a href="/user-fe/search-job/job">Search Job</a>
                 <span th:switch="${role}">
-                    <a th:case="ADMIN" href="/home-fe/admin">Admin Area</a>
-                </span>
-                <span th:if="${account_login != null}">
-                    <a th:href="@{'/candidate/detail/profile/' + ${candidate.id}}"
-                       th:text="${candidate.getFullName()}"></a>
-                </span>
-                <span th:switch="${account_login}">
-                    <a th:case="null" href="/home-fe/login">Login</a>
-                    <a th:case="*" href="/home-fe/logout">Logout</a>
-                </span>
+                <a th:case="ADMIN" href="/home-fe/admin">Admin Area</a>
+            </span>
+            <span th:if="${account_login != null}">
+                <a th:href="@{'/candidate/detail/profile/' + ${candidate.id}}"
+                   th:text="${candidate.getFullName()}" class="user-profile"></a>
+            </span>
+                <span th:switch="${account_login}" class="auth-links">
+                <a th:case="null" href="/home-fe/login">Login</a>
+                <a th:case="*" href="/home-fe/logout">Logout</a>
+            </span>
             </nav>
         </div>
+
     </header>
 
     <main>
-        <section class="skills-section">
-            <h3>Find Jobs by Skills</h3>
-            <div class="skills-container">
-                <span th:each="skill : ${skills}">
-                    <a class="skill-item"
-                       th:text="${skill.skillName}"
-                       th:href="@{'/user-fe/skill/jobs/' + ${skill.id}}"></a>
-                </span>
-            </div>
-        </section>
+        <!-- Search Bar -->
+        <div class="search-bar-container">
+            <input type="text" class="search-input" placeholder="Search for jobs...">
+            <button class="search-button"><i class="fas fa-search"></i> Search</button>
+        </div>
 
-        <section class="jobs-section">
-            <h4>Available Jobs</h4>
-            <div class="table-wrapper">
-                <table class="jobs-table">
-                    <thead>
-                    <tr>
-                        <th>Company</th>
-                        <th>Job Name</th>
-                        <th>Skill Type</th>
-                        <th>Skill Level</th>
-                    </tr>
-                    </thead>
-                    <tbody th:each="jobSkill : ${jobSkills}">
-                    <tr>
-                        <td th:text="${jobSkill.id.job.company.compName}"></td>
-                        <td th:text="${jobSkill.id.job.jobName}"></td>
-                        <td th:text="${jobSkill.id.skill.type}"></td>
-                        <td th:text="${jobSkill.skillLevel}"></td>
-                    </tr>
-                    </tbody>
-                </table>
+        <!-- User Information and CV Creation Section -->
+        <div class="info-cv-container">
+            <!-- User Information -->
+            <div class="user-info" th:if="${account_login != null}">
+                <h2>Thông tin cá nhân</h2>
+                <p><strong>Name:</strong> <span th:text="${candidate.getFullName()}"></span></p>
+                <p><strong>Email:</strong> <span th:text="${candidate.email}"></span></p>
+                <p><strong>Phone:</strong> <span th:text="${candidate.phone}"></span></p>
+                <p><strong>Ngày sinh:</strong> <span th:text="${candidate.dob}"></span></p>
+
+                <!-- Thêm nút Cập nhật thông tin -->
+                <a href="/profile-update.html" class="btn-update-info">Cập nhật thông tin</a>
             </div>
-        </section>
+
+
+            <!-- CV Creation -->
+            <div class="cv-creation">
+                <div class="card shadow-sm">
+                    <div class="card-body text-center">
+                        <img src="https://png.pngtree.com/png-clipart/20230810/original/pngtree-vacancy-rgb-color-icon-cv-concept-recruit-vector-picture-image_10262216.png"
+                             alt="CV Creation Icon" class="mb-3" width="60">
+                        <h5 class="card-title">Tạo CV thật đẹp cùng TopCV nhé</h5>
+                        <p class="card-text">Tạo CV Online miễn phí với TopCV</p>
+                        <a href="https://www.topcv.vn/mau-cv?tracking=1&source=gg&campaign_name=TOPCV_SEO_ADS&gad_source=1&gclid=EAIaIQobChMIxcX3_fijigMVS6NmAh2ehjzrEAAYAyAAEgJD__D_BwE"
+                           class="btn btn-outline-primary">Tạo CV</a>
+                    </div>
+                </div>
+            </div>
+        </div>
     </main>
 </div>
 
@@ -82,5 +84,7 @@
         <p>&copy; 2024 Home - All Rights Reserved.</p>
     </div>
 </footer>
+
+<script src="/scripts/main.js"></script>
 </body>
 </html>
