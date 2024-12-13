@@ -25,7 +25,7 @@ public class JobModel {
 
     // Phương thức tìm kiếm công việc theo tên hoặc tên công ty
     public List<Job> searchJobsByNameOrCompany(String searchTerm) {
-        String searchUrl = uri + "?search=" + searchTerm; // Giả sử API hỗ trợ tìm kiếm
+        String searchUrl = uri + "/search?search=" + searchTerm; // Giả sử API hỗ trợ tìm kiếm
         Response response = rt.getForObject(searchUrl, Response.class);
 //        return (List<Job>) response.getData();
         return mapper.convertValue(response.getData(), new TypeReference<List<Job>>() {

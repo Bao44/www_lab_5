@@ -3,8 +3,11 @@ package vn.edu.iuh.fit.lab_5.frontend.models;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
+import com.neovisionaries.i18n.CountryCode;
 import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;
+import vn.edu.iuh.fit.lab_5.backend.dtos.AddressDTO;
+import vn.edu.iuh.fit.lab_5.backend.dtos.CandidateDTO;
 import vn.edu.iuh.fit.lab_5.backend.models.*;
 
 import java.net.URI;
@@ -29,27 +32,24 @@ public class CandidateModel {
         return mapper.convertValue(response.getData(), Candidate.class);
     }
 
-    public Candidate updateCandidate(Long id, String fullName, String dob, String email, String phone,
+    public CandidateDTO updateCandidate(Long id, String fullName, String dob, String email, String phone,
                                      String street, String city, String country, String number, String zipcode) {
-        // Create a Candidate object and set the updated fields
-        Candidate candidate = new Candidate();
+        CandidateDTO candidate = new CandidateDTO();
+        candidate.setId(id);
         candidate.setFullName(fullName);
         candidate.setDob(LocalDate.parse(dob));
         candidate.setEmail(email);
         candidate.setPhone(phone);
-
-        // Create and set the Address object
-        Address address = new Address();
+        AddressDTO address = new AddressDTO();
         address.setStreet(street);
         address.setCity(city);
         address.setCountry(Short.parseShort(country));
-        address.setZipcode(number);
+        address.setNumber(number);
         address.setZipcode(zipcode);
         candidate.setAddress(address);
 
-        // Send the updated candidate to the backend
-        Response response = rt.postForObject(URI.create(uri + id), candidate, Response.class);
-        return mapper.convertValue(response.getData(), Candidate.class);
+        CandidateDTO response = rt.postForObject(URI.create(uri + "update"), candidate, CandidateDTO.class);
+        return response;
     }
 
     public List<CandidateSkill> getCandidateSkill(Long id) {

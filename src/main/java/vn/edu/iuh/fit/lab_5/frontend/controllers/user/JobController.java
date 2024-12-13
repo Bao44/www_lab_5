@@ -17,17 +17,9 @@ public class JobController {
     @Autowired
     private JobModel jm;
 
-//    @GetMapping("/job")
-//    public ModelAndView getAllJobs(ModelAndView mv) {
-//        List<Job> jobs = jm.getAllJobs();
-//        mv.addObject("jobs", jobs);
-//        mv.setViewName("user/search-job");
-//        return mv;
-//    }
-
     // Phương thức để lấy tất cả công việc
     @GetMapping("/job")
-    public ModelAndView getAllJobs(@RequestParam(value = "searchJob", required = false) String searchJob, ModelAndView mv) {
+    public ModelAndView getAllJobs(@RequestParam(value = "search", required = false) String searchJob, ModelAndView mv) {
         List<Job> jobs;
 
         // Kiểm tra nếu có yêu cầu tìm kiếm

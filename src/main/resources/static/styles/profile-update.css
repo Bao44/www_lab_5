@@ -1,0 +1,90 @@
+/* Đặt font chữ chung cho trang */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f7f6;
+    margin: 0;
+    padding: 0;
+}
+
+/* Lớp chứa nội dung chính */
+.content-wrapper {
+    width: 100%;
+    max-width: 600px;
+    margin: 50px auto;
+    padding: 20px;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Tiêu đề trang */
+h2 {
+    font-size: 24px;
+    color: #333;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+/* Các phần tử trong form */
+form div {
+    margin-bottom: 15px;
+}
+
+/* Định dạng nhãn cho các trường nhập liệu */
+form label {
+    font-size: 16px;
+    color: #555;
+    display: block;
+    margin-bottom: 5px;
+}
+
+/* Định dạng các ô input */
+form input[type="text"],
+form input[type="email"],
+form input[type="date"] {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    margin-top: 5px;
+}
+
+/* Hiệu ứng focus cho các ô input */
+form input[type="text"]:focus,
+form input[type="email"]:focus,
+form input[type="date"]:focus {
+    border-color: #4CAF50;
+    outline: none;
+}
+
+/* Định dạng nút bấm */
+form button {
+    width: 100%;
+    padding: 12px;
+    background-color: #4CAF50;
+    color: white;
+    font-size: 18px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+/* Hiệu ứng hover cho nút bấm */
+form button:hover {
+    background-color: #45a049;
+}
+
+/* Định dạng các trường hợp nhập liệu không hợp lệ */
+form input:invalid {
+    border-color: #e74c3c;
+}
+
+/* Định dạng cho các thông báo lỗi (nếu cần) */
+form .error-message {
+    color: #e74c3c;
+    font-size: 14px;
+    margin-top: 5px;
+}

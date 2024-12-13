@@ -49,8 +49,7 @@
                 <p><strong>Phone:</strong> <span th:text="${candidate.phone}"></span></p>
                 <p><strong>Ngày sinh:</strong> <span th:text="${candidate.dob}"></span></p>
 
-                <!-- Thêm nút Cập nhật thông tin -->
-                <a href="" class="btn-update-info">Cập nhật thông tin</a>
+                <a class="btn-update-info" th:href="@{'/candidate/detail/profile/' + ${candidate.id}}">Xem hồ sơ</a>
             </div>
 
 

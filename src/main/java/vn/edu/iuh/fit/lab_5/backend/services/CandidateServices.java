@@ -10,6 +10,7 @@ import vn.edu.iuh.fit.lab_5.backend.models.Address;
 import vn.edu.iuh.fit.lab_5.backend.models.Candidate;
 import vn.edu.iuh.fit.lab_5.backend.models.CandidateSkill;
 import vn.edu.iuh.fit.lab_5.backend.models.Experience;
+import vn.edu.iuh.fit.lab_5.backend.repositories.AddressRepository;
 import vn.edu.iuh.fit.lab_5.backend.repositories.CandidateRepository;
 import vn.edu.iuh.fit.lab_5.backend.repositories.CandidateSkillRepository;
 import vn.edu.iuh.fit.lab_5.backend.repositories.ExperienceRepository;
@@ -27,7 +28,8 @@ public class CandidateServices {
     private CandidateSkillRepository csr;
     @Autowired
     private ExperienceRepository er;
-
+    @Autowired
+    private AddressRepository ar;
 
     public Candidate add(Candidate candidate) {
         return cr.save(candidate);
@@ -53,6 +55,7 @@ public class CandidateServices {
             candidate.setAddress(address);
 
             candidate.setDob(candidateDto.getDob());
+            ar.save(address);
             cr.save(candidate);
             return candidateDto;
         }
@@ -65,7 +68,7 @@ public class CandidateServices {
         Address address = new Address();
         address.setStreet(addressDto.getStreet());
         address.setCity(addressDto.getCity());
-        address.setCountry(Short.parseShort(addressDto.getCountry().getAlpha2())); // If CountryCode is being used, adapt accordingly
+        address.setCountry(addressDto.getCountry()); // If CountryCode is being used, adapt accordingly
         address.setNumber(addressDto.getNumber());
         address.setZipcode(addressDto.getZipcode());
         return address;

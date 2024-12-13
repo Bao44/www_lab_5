@@ -69,7 +69,7 @@ public class CandidateResources implements IManagement<Candidate, Long> {
                 return ResponseEntity.notFound().build();
             }
         } catch (Exception e) {
-            log.error("Error: " + e.getMessage(), e);  // Log the exception stack trace
+            log.error("Error: " + e.getMessage(), e);
             return ResponseEntity.badRequest().build();
         }
     }
@@ -80,7 +80,6 @@ public class CandidateResources implements IManagement<Candidate, Long> {
     public ResponseEntity<Response> delete(@PathVariable("id") Long aLong) {
         return null;
     }
-
 
     @GetMapping("/{id}")
     @Override
