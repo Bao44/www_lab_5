@@ -1,4 +1,4 @@
-package vn.edu.iuh.fit.lab_5.backend.dto;
+package vn.edu.iuh.fit.lab_5.backend.dtos;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

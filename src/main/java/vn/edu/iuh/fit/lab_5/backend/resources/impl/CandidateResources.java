@@ -7,7 +7,8 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import vn.edu.iuh.fit.lab_5.backend.dto.CandidateAccountDTO;
+import vn.edu.iuh.fit.lab_5.backend.dtos.CandidateAccountDTO;
+import vn.edu.iuh.fit.lab_5.backend.dtos.CandidateDTO;
 import vn.edu.iuh.fit.lab_5.backend.exceptions.EntityIdNotFoundException;
 import vn.edu.iuh.fit.lab_5.backend.models.Candidate;
 import vn.edu.iuh.fit.lab_5.backend.models.Response;
@@ -53,11 +54,26 @@ public class CandidateResources implements IManagement<Candidate, Long> {
         return null;
     }
 
-    @PutMapping("/{id}")
     @Override
-    public ResponseEntity<Response> update(@PathVariable("id") Long aLong, @RequestBody Candidate candidate) {
+    public ResponseEntity<Response> update(Long aLong, Candidate candidate) {
         return null;
     }
+
+    @PostMapping("/update")
+    public ResponseEntity<CandidateDTO> updateCandidate(@RequestBody CandidateDTO candidate) {
+        try {
+            CandidateDTO updatedCandidate = cs.updateCandidate(candidate);
+            if (updatedCandidate != null) {
+                return ResponseEntity.ok(updatedCandidate);
+            } else {
+                return ResponseEntity.notFound().build();
+            }
+        } catch (Exception e) {
+            log.error("Error: " + e.getMessage(), e);  // Log the exception stack trace
+            return ResponseEntity.badRequest().build();
+        }
+    }
+
 
     @DeleteMapping("/{id}")
     @Override

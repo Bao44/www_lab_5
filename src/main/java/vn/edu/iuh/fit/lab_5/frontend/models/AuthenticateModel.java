@@ -5,7 +5,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;
-import vn.edu.iuh.fit.lab_5.backend.dto.CandidateAccountDTO;
+import vn.edu.iuh.fit.lab_5.backend.dtos.CandidateAccountDTO;
 import vn.edu.iuh.fit.lab_5.backend.models.Address;
 import vn.edu.iuh.fit.lab_5.backend.models.Candidate;
 import vn.edu.iuh.fit.lab_5.backend.models.Response;;

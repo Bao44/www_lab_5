@@ -35,6 +35,7 @@
                       th:text="${candidate.address.street + ', ' + candidate.address.city + ', ' + candidate.address.country}"></span>
                 <span th:if="${candidate.address == null}" th:text="'Chưa có thông tin địa chỉ'"></span>
             </p>
+            <a th:href="@{'/candidate/detail/profile-update/' + ${candidate.id}}">Cập nhật thông tin</a>
         </div>
     </div>
 

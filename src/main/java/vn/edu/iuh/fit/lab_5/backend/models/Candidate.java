@@ -54,4 +54,14 @@ public class Candidate {
         status = true;
         role = CandidateRole.USER;
     }
+
+    public Candidate(@NonNull LocalDate dob, @NonNull String email, @NonNull String fullName, @NonNull String phone, @NonNull Address address) {
+        this.dob = dob;
+        this.email = email;
+        this.fullName = fullName;
+        this.phone = phone;
+        this.address = address;
+    }
+
+
 }

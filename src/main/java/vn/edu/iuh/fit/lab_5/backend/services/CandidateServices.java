@@ -3,7 +3,10 @@ package vn.edu.iuh.fit.lab_5.backend.services;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.*;
 import org.springframework.stereotype.Service;
+import vn.edu.iuh.fit.lab_5.backend.dtos.AddressDTO;
+import vn.edu.iuh.fit.lab_5.backend.dtos.CandidateDTO;
 import vn.edu.iuh.fit.lab_5.backend.exceptions.EntityIdNotFoundException;
+import vn.edu.iuh.fit.lab_5.backend.models.Address;
 import vn.edu.iuh.fit.lab_5.backend.models.Candidate;
 import vn.edu.iuh.fit.lab_5.backend.models.CandidateSkill;
 import vn.edu.iuh.fit.lab_5.backend.models.Experience;
@@ -37,9 +40,38 @@ public class CandidateServices {
         return results;
     }
 
-    public Candidate update(Candidate candidate) {
-        return cr.save(candidate);
+
+    public CandidateDTO updateCandidate(CandidateDTO candidateDto) {
+        Candidate candidate = cr.findById(candidateDto.getId()).orElse(null);
+        if (candidate != null) {
+            candidate.setFullName(candidateDto.getFullName());
+            candidate.setEmail(candidateDto.getEmail());
+            candidate.setPhone(candidateDto.getPhone());
+
+            // Assuming AddressDTO is mapped to Address entity in Candidate
+            Address address = mapToAddressEntity(candidateDto.getAddress());
+            candidate.setAddress(address);
+
+            candidate.setDob(candidateDto.getDob());
+            cr.save(candidate);
+            return candidateDto;
+        }
+        return null;
     }
+
+    // Assuming you have this method to map AddressDTO to Address entity
+    private Address mapToAddressEntity(AddressDTO addressDto) {
+        // Convert AddressDTO to Address entity (you might need to adjust this logic based on your model)
+        Address address = new Address();
+        address.setStreet(addressDto.getStreet());
+        address.setCity(addressDto.getCity());
+        address.setCountry(Short.parseShort(addressDto.getCountry().getAlpha2())); // If CountryCode is being used, adapt accordingly
+        address.setNumber(addressDto.getNumber());
+        address.setZipcode(addressDto.getZipcode());
+        return address;
+    }
+
+
 
     public void delete(Long id) throws EntityIdNotFoundException {
         cr.delete(cr.findById(id).orElseThrow(() -> new EntityIdNotFoundException(id + "")));

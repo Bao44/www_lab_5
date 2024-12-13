@@ -9,20 +9,42 @@
 <body>
 <div class="content-wrapper">
     <h2>Cập nhật thông tin cá nhân</h2>
-    <form action="/update-profile" method="POST">
-        <label for="fullName">Tên:</label>
-        <input type="text" id="fullName" name="fullName" value="${candidate.getFullName()}" required>
-
-        <label for="email">Email:</label>
-        <input type="email" id="email" name="email" value="${candidate.email}" required>
-
-        <label for="phone">Số điện thoại:</label>
-        <input type="text" id="phone" name="phone" value="${candidate.phone}" required>
-
-        <label for="dob">Ngày sinh:</label>
-        <input type="date" id="dob" name="dob" value="${candidate.dob}" required>
-
-        <button type="submit" class="btn-update-info">Cập nhật</button>
+    <form th:action="@{'/candidate/detail/profile-update/' + ${candidate.id}}" method="POST">
+        <div>
+            <label>Họ và tên:</label>
+            <input type="text" name="inputFullName" th:value="${candidate.fullName}" required/>
+        </div>
+        <div>
+            <label>Ngày sinh:</label>
+            <input type="date" name="inputDob" th:value="${candidate.dob}" required/>
+        </div>
+        <div>
+            <label>Email:</label>
+            <input type="email" name="inputEmail" th:value="${candidate.email}" required/>
+        </div>
+        <div>
+            <label>Số điện thoại:</label>
+            <input type="text" name="inputPhone" th:value="${candidate.phone}" required/>
+        </div>
+        <div>
+            <label>Địa chỉ (Số nhà, Đường):</label>
+            <input type="text" name="inputStreet" th:value="${candidate.address.street}" required/>
+        </div>
+        <div>
+            <label>Thành phố:</label>
+            <input type="text" name="inputCity" th:value="${candidate.address.city}" required/>
+        </div>
+        <div>
+            <label>Quốc gia:</label>
+            <input type="text" name="inputCountry" th:value="${candidate.address.country}" required/>
+        </div>
+        <div>
+            <label>Mã bưu điện:</label>
+            <input type="text" name="inputZipcode" th:value="${candidate.address.zipcode}" required/>
+        </div>
+        <div>
+            <button type="submit">Cập nhật</button>
+        </div>
     </form>
 </div>
 </body>

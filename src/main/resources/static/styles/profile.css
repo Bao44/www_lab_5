@@ -107,3 +107,9 @@ hr.divider {
 .table.profile-table tr:hover {
     background-color: #f7f7f7;
 }
+
+.card-body .btn-update-info {
+    position: absolute;
+    right: 20px;
+    bottom: 15px;
+}
