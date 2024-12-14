@@ -7,7 +7,7 @@
 </head>
 <body>
 <div>
-    <h1 class="header">Login Account</h1>
+    <h1 class="header">Đăng nhập</h1>
 <!--    <form action="/auth-fe/login" method="post" id="formLogin">-->
     <form th:action="@{'/auth-fe/login/' + ${0}}" method="post" id="formLogin">
         <div class="email">
@@ -19,11 +19,11 @@
             <input name="inputPassword" type="password" required/>
         </div>
         <div class="forgot-register">
-            <a class="forgot" href="/forgot-pass">Forgot Password?</a>
-            <a class="signUp" href="/signup">Sign Up</a>
+            <a class="forgot" href="/forgot-pass">Quên mật khẩu?</a>
+            <a class="signUp" href="/signup">Đăng ký</a>
         </div>
         <div>
-            <button type="submit" id="loginBtn">Login</button>
+            <button type="submit" id="loginBtn">Đăng nhập</button>
         </div>
     </form>
 </div>

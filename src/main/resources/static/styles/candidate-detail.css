@@ -1,0 +1,122 @@
+/* General Styles */
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: #f7f9fc;
+    color: #333;
+    margin: 0;
+    padding: 0;
+}
+
+h1.profile-title {
+    font-size: 2.75rem;
+    font-weight: bold;
+    color: #213A58;
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+hr.divider {
+    border: 0;
+    border-top: 3px solid #213A58;
+    width: 80px;
+    margin: 0 auto;
+    margin-top: 10px;
+}
+
+/* Card Styles */
+.card.profile-card {
+    border-radius: 15px;
+    background-color: #ffffff;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    margin-bottom: 30px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card.profile-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 25px rgba(0, 0, 0, 0.15);
+}
+
+.card-header.profile-card-header {
+    background-color: #213A58;
+    color: #ffffff;
+    padding: 20px;
+    font-size: 1.5rem;
+    font-weight: bold;
+    border-radius: 15px 15px 0 0;
+    text-transform: uppercase;
+}
+
+.card-body {
+    padding: 30px;
+    font-size: 1rem;
+    color: #555;
+}
+
+/* Table Styles */
+.table.profile-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+.table.profile-table th, .table.profile-table td {
+    padding: 15px;
+    text-align: left;
+    border-bottom: 2px solid #ecf0f1;
+    font-size: 1rem;
+    color: #34495e;
+}
+
+.table.profile-table th {
+    background-color: #ecf0f1;
+    font-weight: bold;
+}
+
+.table.profile-table tr:hover {
+    background-color: #f7f7f7;
+}
+
+.table.profile-table td {
+    text-align: center;
+}
+
+/* Label Styles */
+.form-label {
+    font-weight: bold;
+    color: #213A58;
+}
+
+.row {
+    margin-bottom: 15px;
+}
+
+/* Button Styles */
+.btn-sm {
+    font-size: 0.9rem;
+    padding: 8px 16px;
+    border-radius: 25px;
+}
+
+.btn-info {
+    background-color: #213A58;
+    color: #fff;
+    border: 1px solid #213A58;
+    transition: all 0.3s ease;
+}
+
+.btn-info:hover {
+    background-color: #1c2b42;
+    border-color: #1c2b42;
+}
+
+.card-body .col-md-3 {
+    padding: 10px;
+    font-size: 1rem;
+    color: #34495e;
+}
+
+.card-body .font-weight-bold {
+    font-weight: bold;
+    color: #213A58;
+}

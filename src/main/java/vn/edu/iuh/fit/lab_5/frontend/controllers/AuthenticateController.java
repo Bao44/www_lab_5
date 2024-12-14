@@ -7,11 +7,9 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 import vn.edu.iuh.fit.lab_5.backend.models.Address;
 import vn.edu.iuh.fit.lab_5.backend.models.Candidate;
+import vn.edu.iuh.fit.lab_5.backend.models.Job;
 import vn.edu.iuh.fit.lab_5.backend.models.JobSkill;
-import vn.edu.iuh.fit.lab_5.frontend.models.AuthenticateModel;
-import vn.edu.iuh.fit.lab_5.frontend.models.CandidateModel;
-import vn.edu.iuh.fit.lab_5.frontend.models.JobSkillModel;
-import vn.edu.iuh.fit.lab_5.frontend.models.SkillModel;
+import vn.edu.iuh.fit.lab_5.frontend.models.*;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -27,9 +25,13 @@ public class AuthenticateController {
     @Autowired
     private SkillModel skillModel;
     @Autowired
+    private JobModel jm;
+    @Autowired
     private JobSkillModel jobSkillModel;
     @Autowired
     private CandidateModel candidateModel;
+    @Autowired
+    private JobModel jobModel;
 
     @GetMapping("/login/{page}")
     public ModelAndView getIndex(
@@ -44,7 +46,9 @@ public class AuthenticateController {
         }
 
         List<JobSkill> jobSkills = jobSkillModel.getAllJobSkills();
-        int pageSize = jobSkills.size() / 25;
+
+        List<Job> jobs = jm.getAllJobs();
+        int pageSize = jobs.size() / 12;
 
         List<String> pages = new ArrayList<>();
         for (int i = 0; i <= pageSize; ++i) {
@@ -61,7 +65,8 @@ public class AuthenticateController {
         mv.addObject("role", target.getRole().toString());
         mv.addObject("account_login", target);
         mv.addObject("skills", skillModel.getAllSkills());
-        mv.addObject("jobSkills", jobSkillModel.getJobSkillForPage(Integer.parseInt(page) == 0 ? 0 : Integer.parseInt(page) - 1));
+        mv.addObject("jobSkills", jobSkills);
+        mv.addObject("jobs", jobModel.getJobForPage(Integer.parseInt(page) == 0 ? 0 : Integer.parseInt(page) - 1));
         mv.addObject("pages", pages);
 
         return mv;
@@ -78,7 +83,9 @@ public class AuthenticateController {
         Candidate target = am.checkLogin(email, password);
 
         List<JobSkill> jobSkills = jobSkillModel.getAllJobSkills();
-        int pageSize = jobSkills.size() / 25;
+
+        List<Job> jobs = jm.getAllJobs();
+        int pageSize = jobs.size() / 12;
 
         List<String> pages = new ArrayList<>();
         for (int i = 0; i <= pageSize; ++i) {
@@ -97,7 +104,8 @@ public class AuthenticateController {
         mv.addObject("role", target.getRole().toString());
         mv.addObject("account_login", target);
         mv.addObject("skills", skillModel.getAllSkills());
-        mv.addObject("jobSkills", jobSkillModel.getJobSkillForPage(Integer.parseInt(page) == 0 ? 0 : Integer.parseInt(page) - 1));
+        mv.addObject("jobSkills", jobSkills);
+        mv.addObject("jobs", jobModel.getJobForPage(Integer.parseInt(page) == 0 ? 0 : Integer.parseInt(page) - 1));
         mv.addObject("pages", pages);
         return mv;
     }

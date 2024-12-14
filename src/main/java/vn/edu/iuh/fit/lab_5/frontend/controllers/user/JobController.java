@@ -17,20 +17,13 @@ public class JobController {
     @Autowired
     private JobModel jm;
 
-    // Phương thức để lấy tất cả công việc
     @GetMapping("/job")
     public ModelAndView getAllJobs(@RequestParam(value = "search", required = false) String searchJob, ModelAndView mv) {
         List<Job> jobs;
-
-        // Kiểm tra nếu có yêu cầu tìm kiếm
         if (searchJob != null && !searchJob.trim().isEmpty()) {
-            // Tìm kiếm công việc theo tên job hoặc tên công ty
             jobs = jm.searchJobsByNameOrCompany(searchJob);
-            System.out.println("Jobs after search: " + jobs.size()); // In ra số lượng công việc tìm thấy
         } else {
-            // Nếu không tìm kiếm, lấy tất cả công việc
             jobs = jm.getAllJobs();
-            System.out.println("All Jobs: " + jobs.size()); // In ra số lượng công việc
         }
 
         mv.addObject("jobs", jobs);

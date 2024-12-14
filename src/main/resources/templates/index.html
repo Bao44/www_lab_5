@@ -15,17 +15,17 @@
                 <img src="/styles/images/logo.jpg" alt="Logo" class="logo">
             </a>
             <nav class="nav-bar">
-                <a href="/user-fe/search-job/job">Search Job</a>
+                <a href="/user-fe/search-job/job">Tìm công việc</a>
                 <span th:switch="${role}">
-                    <a th:case="ADMIN" href="/admin">Admin Area</a>
+                    <a th:case="ADMIN" href="/admin">Quản lí</a>
                 </span>
                 <span th:if="${account_login != null}">
                     <a th:href="@{'/candidate/detail/profile/' + ${candidate.id}}"
                        th:text="${candidate.getFullName()}" class="user-profile"></a>
                 </span>
                 <span th:switch="${account_login}" class="auth-links">
-                    <a th:case="null" href="/login">Login</a>
-                    <a th:case="*" href="/logout">Logout</a>
+                    <a th:case="null" href="/login">Đăng nhập</a>
+                    <a th:case="*" href="/logout">Đăng xuất</a>
                 </span>
             </nav>
         </div>
@@ -33,16 +33,16 @@
 
     <main>
         <div class="search-bar-container">
-            <input type="text" class="search-input" placeholder="Search for jobs...">
-            <button class="search-button"><i class="fas fa-search"></i> Search</button>
+            <input type="text" class="search-input" placeholder="Tìm công việc...">
+            <button class="search-button"><i class="fas fa-search"></i> Tìm</button>
         </div>
 
         <div class="info-cv-container">
             <div class="user-info" th:if="${account_login != null}">
                 <h2>Thông tin cá nhân</h2>
-                <p><strong>Name:</strong> <span th:text="${candidate.getFullName()}"></span></p>
+                <p><strong>Tên:</strong> <span th:text="${candidate.getFullName()}"></span></p>
                 <p><strong>Email:</strong> <span th:text="${candidate.email}"></span></p>
-                <p><strong>Phone:</strong> <span th:text="${candidate.phone}"></span></p>
+                <p><strong>Số điện thoại:</strong> <span th:text="${candidate.phone}"></span></p>
                 <p><strong>Ngày sinh:</strong> <span th:text="${candidate.dob}"></span></p>
 
                 <a class="btn-update-info" th:href="@{'/candidate/detail/profile/' + ${candidate.id}}">Xem hồ sơ</a>
@@ -66,14 +66,24 @@
             <h2>Gợi ý cho bạn</h2>
             <p th:if="${account_login == null}">Đăng nhập hoặc đăng kí để biết thêm chi tiết</p>
             <div class="job-cards-container">
-                <div th:each="skill : ${jobSkills}" class="job-card">
-                    <h3 class="job-title" th:text="${skill.id.job.jobName}">Job Name</h3>
-                    <div class="skill-name">
+                <div th:each="job : ${jobs}" class="job-card">
+                    <h3 class="job-title" th:text="${job.jobName}"></h3>
+                    <p>
+                        <span>Thông tin công việc: </span>
+                        <span th:text="${job.jobDesc}"></span>
+                    </p>
+                    <p>
+                        <span>Tên công ty: </span>
+                        <span th:text="${job.company.getCompName()}"></span>
+                    </p>
+                    <div>
                         <span>Kỹ năng: </span>
-                        <span th:text="${skill.id.skill.skillName}">Skill Name</span>
+                        <span class="skill-name" th:each="jobSkill : ${jobSkills}" th:if="${job.id == jobSkill.id.job.id}" th:text="${jobSkill.id.skill.skillName}"></span>
                     </div>
                 </div>
             </div>
+
+
 
             <div class="pagination-container">
                 <div class="pagination">

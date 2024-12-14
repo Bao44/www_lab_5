@@ -11,11 +11,11 @@
 </head>
 <body>
 <div class="container">
-    <h1>Search Job</h1>
+    <h1>Tìm kiếm công việc</h1>
 
     <div class="search-container">
         <form action="/user-fe/search-job/job" method="get">
-            <input name="search" id="searchInput" type="text" placeholder="Search for jobs..." class="search-input">
+            <input name="search" id="searchInput" type="text" placeholder="Nhập thông tin..." class="search-input">
             <button id="searchButton" class="search-button">
                 <i class="fa-solid fa-magnifying-glass"></i>
             </button>
@@ -26,9 +26,9 @@
         <thead>
         <tr>
             <th>ID</th>
-            <th>Description</th>
-            <th>Name</th>
-            <th>Company Name</th>
+            <th>Mô tả</th>
+            <th>Tên công việc</th>
+            <th>Tên công ty</th>
             <th></th>
         </tr>
         </thead>
@@ -40,12 +40,19 @@
             <td th:text="${job.company.getCompName()}"></td>
             <td>
                 <a th:href="@{/user-fe/job-skill/detail/skills/{id}(id=${job.id})}" class="btn view-btn">
-                    See More
+                    Chi tiết
                 </a>
             </td>
         </tr>
         </tbody>
     </table>
+    <div class="pagination-container">
+        <div class="pagination">
+                    <span th:each="page : ${pages}" class="page-item">
+                        <a th:href="@{'/user-fe/search-job/job/' + ${page}}" th:text="${page}" class="page-link"></a>
+                    </span>
+        </div>
+    </div>
 </div>
 <div class="footer">
     &copy; 2024 Search Dashboard - All Rights Reserved.

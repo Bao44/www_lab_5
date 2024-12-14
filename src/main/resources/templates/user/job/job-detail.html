@@ -11,14 +11,14 @@
 </head>
 <body>
 <div class="container">
-    <h1>Job Skills</h1>
+    <h1>Chi tiết công việc</h1>
     <div class="job-detail" th:each="jobSkill : ${jobSkills}">
         <div class="job-card">
             <h2 th:text="${jobSkill.id.job.jobName}"></h2>
-            <p><strong>Job Description:</strong> <span th:text="${jobSkill.id.job.jobDesc}"></span></p>
-            <p><strong>Company:</strong> <span th:text="${jobSkill.id.job.company.getCompName()}"></span></p>
-            <p><strong>Additional Info:</strong> <span th:text="${jobSkill.moreInfos}"></span></p>
-            <p><strong>Skill Level:</strong> <span th:text="${jobSkill.skillLevel}"></span></p>
+            <p><strong>Mô tả:</strong> <span th:text="${jobSkill.id.job.jobDesc}"></span></p>
+            <p><strong>Công ty:</strong> <span th:text="${jobSkill.id.job.company.getCompName()}"></span></p>
+            <p><strong>Kỹ năng:</strong> <span th:text="${jobSkill.id.skill.skillName}"></span></p>
+            <p><strong>Trình độ:</strong> <span th:text="${jobSkill.skillLevel}"></span></p>
         </div>
     </div>
 </div>

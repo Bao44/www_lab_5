@@ -3,6 +3,9 @@ package vn.edu.iuh.fit.lab_5.backend.models;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Getter
 @Setter
 @Entity

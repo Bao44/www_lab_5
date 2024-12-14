@@ -5,6 +5,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;
 import vn.edu.iuh.fit.lab_5.backend.models.Job;
+import vn.edu.iuh.fit.lab_5.backend.models.JobSkill;
 import vn.edu.iuh.fit.lab_5.backend.models.Response;
 
 import java.net.URI;
@@ -20,6 +21,12 @@ public class JobModel {
     public List<Job> getAllJobs() {
         Response response = rt.getForObject(URI.create(uri), Response.class);
         return mapper.convertValue(response.getData(), new TypeReference<List<Job>>() {
+        });
+    }
+
+    public List<Job> getJobForPage(int page) {
+        Response response = rt.getForObject(URI.create(uri + "/page/" + page), Response.class);
+        return mapper.convertValue(response.getData(), new TypeReference<>() {
         });
     }
 

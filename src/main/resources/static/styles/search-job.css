@@ -101,6 +101,36 @@ tr:hover td {
     transition: background-color 0.3s ease;
 }
 
+/* Pagination Styles */
+.pagination-container {
+    margin-top: 20px;
+}
+
+.pagination {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+}
+
+.page-item {
+    display: inline-block;
+}
+
+.page-link {
+    text-decoration: none;
+    padding: 8px 16px;
+    color: #213A58;
+    font-weight: bold;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+    transition: all 0.3s ease;
+}
+
+.page-link:hover {
+    background-color: #213A58;
+    color: white;
+}
+
 .footer {
     text-align: center;
     margin-top: 10px;

@@ -2,6 +2,8 @@ package vn.edu.iuh.fit.lab_5.backend.resources.impl;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -77,6 +79,16 @@ public class JobResources implements IManagement<Job,Long> {
                 HttpStatus.OK.value(),
                 "Get jobs successfully",
                 jobs
+        ));
+    }
+
+    @GetMapping("/page/{page}")
+    public ResponseEntity<Response> getAll(@PathVariable("page") String pageNumber) {
+        Pageable page = PageRequest.of(Integer.parseInt(pageNumber), 12);
+        return ResponseEntity.ok(new Response(
+                HttpStatus.OK.value(),
+                "Get all jobSkill successfully",
+                js.getAll(page)
         ));
     }
 

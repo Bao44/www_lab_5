@@ -1,0 +1,70 @@
+/* General Styles */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f1f4f9;
+    color: #333;
+    margin: 0;
+    padding: 0;
+}
+
+/* Page Title */
+.page-title {
+    color: #213A58; /* Dark Blue */
+    font-size: 2.8rem;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 30px;
+    text-transform: uppercase;
+}
+
+/* Table Container */
+.table-container {
+    margin-top: 20px;
+    padding: 30px;
+    background-color: #ffffff;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
+    border-radius: 12px;
+    overflow-x: auto;
+}
+
+/* Table Styling */
+.table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+/* Table Header Styling */
+.table-header {
+    background-color: #213A58; /* Dark Blue */
+    color: #ffffff;
+    font-size: 1.1rem;
+    font-weight: bold;
+    text-align: center;
+    text-transform: uppercase;
+}
+
+.table-header th {
+    padding: 15px;
+}
+
+/* Table Body Styling */
+.table-striped tbody tr:nth-child(odd) {
+    background-color: #f8f8f8;
+}
+
+.table tbody td {
+    text-align: center;
+    padding: 15px;
+    font-size: 1rem;
+    color: #333;
+    border-bottom: 1px solid #ddd;
+}
+
+.table tbody tr:hover {
+    background-color: #f1f1f1;
+}
+
+/* Table Borders */
+.table-bordered td, .table-bordered th {
+    border: 1px solid #ddd;
+}
