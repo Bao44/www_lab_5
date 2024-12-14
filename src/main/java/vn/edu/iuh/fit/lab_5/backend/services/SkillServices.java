@@ -42,4 +42,8 @@ public class SkillServices {
     public Iterator<Skill> getAll() {
         return sr.findAll().iterator();
     }
+
+    public Skill getSkillByName(String skillName) {
+        return sr.findBySkillName(skillName).orElse(null);
+    }
 }

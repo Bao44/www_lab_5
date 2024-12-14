@@ -6,6 +6,7 @@ import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import com.neovisionaries.i18n.CountryCode;
 import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;
+import org.springframework.web.util.UriComponentsBuilder;
 import vn.edu.iuh.fit.lab_5.backend.dtos.AddressDTO;
 import vn.edu.iuh.fit.lab_5.backend.dtos.CandidateDTO;
 import vn.edu.iuh.fit.lab_5.backend.models.*;
@@ -33,7 +34,7 @@ public class CandidateModel {
     }
 
     public CandidateDTO updateCandidate(Long id, String fullName, String dob, String email, String phone,
-                                     String street, String city, String country, String number, String zipcode) {
+                                        String street, String city, String country, String number, String zipcode) {
         CandidateDTO candidate = new CandidateDTO();
         candidate.setId(id);
         candidate.setFullName(fullName);
@@ -54,11 +55,32 @@ public class CandidateModel {
 
     public List<CandidateSkill> getCandidateSkill(Long id) {
         Response response = rt.getForObject(URI.create(uri + id + "/skills"), Response.class);
-        return mapper.convertValue(response.getData(), new TypeReference<List<CandidateSkill>>() {});
+        return mapper.convertValue(response.getData(), new TypeReference<List<CandidateSkill>>() {
+        });
     }
 
     public List<Experience> getCandidateExperiences(Long id) {
         Response response = rt.getForObject(URI.create(uri + id + "/experiences"), Response.class);
-        return mapper.convertValue(response.getData(), new TypeReference<List<Experience>>() {});
+        return mapper.convertValue(response.getData(), new TypeReference<List<Experience>>() {
+        });
+    }
+
+    public CandidateSkill addCandidateSkill(CandidateSkill candidateSkill) {
+        Response response = rt.postForObject(
+                URI.create("http://localhost:8080/api/candidate-skill/add"),
+                candidateSkill,
+                Response.class
+        );
+        return mapper.convertValue(response.getData(), CandidateSkill.class);
+    }
+
+    // fail to delete
+    public boolean deleteCandidateSkill(Long candidateId, Long skillId) {
+        URI uri = UriComponentsBuilder.fromUriString("http://localhost:8080/api/candidate-skill/remove-candidate-skill")
+                .queryParam("candidateId", candidateId)
+                .queryParam("skillId", skillId)
+                .build()
+                .toUri();
+        return rt.getForObject(uri, Boolean.class);
     }
 }

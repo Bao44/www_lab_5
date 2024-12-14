@@ -23,28 +23,19 @@ body {
     padding: 15px 20px;
     border-bottom: 2px solid #f0f0f0;
     background-color: #ffffff;
-    transition: background-color 0.3s ease;
 }
 
 .logo-link img {
-    width: 120px; /* Logo vừa phải */
+    width: 120px;
     height: auto;
-    transition: transform 0.3s ease;
 }
 
-/* Logo hover effect */
-.logo-link:hover img {
-    transform: scale(1.05);  /* Phóng to nhẹ khi hover */
-}
-
-/* Navbar Styling */
 .nav-bar {
     display: flex;
     align-items: center;
-    gap: 30px;  /* Giữa các phần tử navbar */
+    gap: 30px;
 }
 
-/* Navbar links */
 .nav-bar a {
     text-decoration: none;
     color: #213A58;
@@ -54,32 +45,11 @@ body {
     transition: all 0.3s ease;
 }
 
-/* Navbar link hover effect */
 .nav-bar a:hover {
     color: white;
     background-color: #213A58;
 }
 
-/* Navbar hover effect for active link */
-.nav-bar a:focus, .nav-bar a:active {
-    background-color: #1a2c44;
-}
-
-/* Show/Hide the admin area based on role */
-.nav-bar .admin-link {
-    display: none;
-}
-
-.nav-bar .admin-link.active {
-    display: inline-block;
-}
-
-/* User Profile Link */
-.nav-bar .user-profile {
-    display: inline-block;
-}
-
-/* Login / Logout button */
 .nav-bar .auth-links a {
     color: #213A58;
     font-weight: 600;
@@ -89,17 +59,10 @@ body {
     transition: all 0.3s ease;
 }
 
-/* Hover effect for login/logout buttons */
 .nav-bar .auth-links a:hover {
     background-color: #213A58;
     color: white;
 }
-
-/* Navbar container hover effect */
-.header-container:hover {
-    background-color: #f4f7fc; /* Đổi màu nền header khi hover vào toàn bộ */
-}
-
 
 /* Search Bar Styles */
 .search-bar-container {
@@ -114,12 +77,6 @@ body {
     border: 1px solid #ccc;
     border-radius: 5px 0 0 5px;
     font-size: 16px;
-    transition: all 0.3s ease;
-}
-
-.search-input:focus {
-    border-color: #213A58;
-    outline: none;
 }
 
 .search-button {
@@ -136,78 +93,6 @@ body {
 .search-button:hover {
     background-color: #1a2c44;
 }
-/* Nút Cập nhật thông tin */
-.btn-update-info {
-    display: inline-block;
-    padding: 10px 20px;
-    margin-top: 15px;
-    background-color: #213A58;  /* Màu nền chính */
-    color: #fff;
-    font-size: 16px;
-    font-weight: 600;
-    text-decoration: none;
-    border-radius: 5px;
-    text-align: center;
-    transition: background-color 0.3s ease, transform 0.3s ease;
-}
-
-/* Hover Effect */
-.btn-update-info:hover {
-    background-color: #1a2c44;  /* Màu nền khi hover */
-    transform: scale(1.05);  /* Hiệu ứng phóng to nhẹ */
-}
-
-/* Thêm hiệu ứng focus để tránh màu sắc bị lỗi khi có focus */
-.btn-update-info:focus {
-    outline: none;
-    background-color: #1a2c44;
-    transform: scale(1.05);
-}
-
-/* Nút nằm trong phần User Info */
-.user-info .btn-update-info {
-    width: 100%;
-    text-align: center;  /* Đặt nút vào giữa */
-}
-
-/* Nút Cập nhật thông tin */
-.btn-update-info {
-    display: inline-block;
-    padding: 10px 20px;
-    margin-top: 15px;
-    background-color: #213A58;  /* Màu nền chính */
-    color: #fff;
-    font-size: 16px;
-    font-weight: 600;
-    text-decoration: none;
-    border-radius: 5px;
-    text-align: center;
-    transition: background-color 0.3s ease, transform 0.3s ease;
-    max-width: 250px;  /* Giới hạn độ rộng của nút */
-    width: auto;  /* Giữ chiều rộng tự động */
-    margin-left: auto; /* Đặt nút vào giữa */
-    margin-right: auto;
-}
-
-/* Hover Effect */
-.btn-update-info:hover {
-    background-color: #1a2c44;  /* Màu nền khi hover */
-    transform: scale(1.05);  /* Hiệu ứng phóng to nhẹ */
-}
-
-/* Thêm hiệu ứng focus để tránh màu sắc bị lỗi khi có focus */
-.btn-update-info:focus {
-    outline: none;
-    background-color: #1a2c44;
-    transform: scale(1.05);
-}
-
-/* Nút nằm trong phần User Info */
-.user-info .btn-update-info {
-    width: auto;  /* Đảm bảo chiều rộng tự động */
-    text-align: center;  /* Đặt nút vào giữa */
-}
-
 
 /* User Info & CV Creation Styles */
 .info-cv-container {
@@ -226,7 +111,6 @@ body {
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
 }
 
-/* User Info */
 .user-info h2 {
     font-size: 24px;
     color: #213A58;
@@ -239,61 +123,124 @@ body {
     margin-bottom: 12px;
 }
 
-.update-info-button {
+.btn-update-info {
     display: inline-block;
-    margin-top: 20px;
-    padding: 12px 24px;
-    background-color: #28a745;
-    color: white;
+    padding: 10px 20px;
+    background-color: #213A58;
+    color: #fff;
+    font-size: 16px;
+    font-weight: 600;
     text-decoration: none;
     border-radius: 5px;
-    font-weight: bold;
-    transition: background-color 0.3s ease;
-}
-
-.update-info-button:hover {
-    background-color: #218838;
-}
-
-/* CV Creation Section */
-.cv-creation .card {
-    border: none;
-    border-radius: 12px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.cv-creation .card-body {
-    padding: 30px;
-}
-
-.cv-creation .card-title {
-    font-size: 22px;
-    font-weight: 600;
-    color: #213A58;
-    margin-bottom: 15px;
-}
-
-.cv-creation .card-text {
-    font-size: 14px;
-    color: #777;
-    margin-bottom: 25px;
-}
-
-.cv-creation .btn-outline-primary {
-    padding: 12px 24px;
-    border: 2px solid #213A58;
-    color: #213A58;
-    background-color: transparent;
-    font-weight: bold;
-    border-radius: 5px;
+    margin-top: 15px;
+    text-align: center;
     transition: all 0.3s ease;
 }
 
-.cv-creation .btn-outline-primary:hover {
+.btn-update-info:hover {
+    background-color: #1a2c44;
+    transform: scale(1.05);
+}
+
+/* Tạo CV Button */
+.btn-create-cv {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #213A58;
+    color: #fff;
+    font-size: 16px;
+    font-weight: 600;
+    text-decoration: none;
+    border-radius: 5px;
+    margin-top: 15px;
+    text-align: center;
+    transition: all 0.3s ease;
+}
+
+.btn-create-cv:hover {
+    background-color: #1a2c44;
+    transform: scale(1.05);
+}
+
+/* Job Skills Section */
+.job-skills-container {
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+    margin-top: 40px;
+}
+
+.job-cards-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 20px;
+    padding: 10px;
+}
+
+.job-card {
+    padding: 15px;
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+}
+
+.job-card:hover {
+    transform: translateY(-5px);
+}
+
+.job-title {
+    font-size: 18px;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.skill-name {
+    font-size: 14px;
+    color: #555;
+    margin-top: 5px;
+}
+
+.skill-name span {
+    display: inline-block;
+    background: #e7f3ff;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 12px;
+    color: #007bff;
+}
+
+/* Pagination Styles */
+.pagination-container {
+    margin-top: 20px;
+}
+
+.pagination {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+}
+
+.page-item {
+    display: inline-block;
+}
+
+.page-link {
+    text-decoration: none;
+    padding: 8px 16px;
+    color: #213A58;
+    font-weight: bold;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+    transition: all 0.3s ease;
+}
+
+.page-link:hover {
     background-color: #213A58;
     color: white;
-    border-color: #1a2c44;
 }
 
 /* Footer Styles */
@@ -312,32 +259,4 @@ footer a {
 
 footer a:hover {
     text-decoration: none;
-}
-
-.footer-container {
-    margin: 30px 0;
-}
-
-.footer-name p {
-    font-size: 16px;
-    margin: 10px 0;
-}
-
-.footer-links a {
-    font-size: 14px;
-}
-
-/* Animations */
-@keyframes fadeIn {
-    from {
-        opacity: 0;
-    }
-    to {
-        opacity: 1;
-    }
-}
-
-/* Apply fadeIn animation to content */
-.content-wrapper {
-    animation: fadeIn 1s ease-in-out;
 }

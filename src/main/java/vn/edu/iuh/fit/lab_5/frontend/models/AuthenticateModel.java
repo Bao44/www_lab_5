@@ -8,6 +8,7 @@ import org.springframework.web.client.RestTemplate;
 import vn.edu.iuh.fit.lab_5.backend.dtos.CandidateAccountDTO;
 import vn.edu.iuh.fit.lab_5.backend.models.Address;
 import vn.edu.iuh.fit.lab_5.backend.models.Candidate;
+import vn.edu.iuh.fit.lab_5.backend.models.JobSkill;
 import vn.edu.iuh.fit.lab_5.backend.models.Response;;
 
 import java.net.URI;

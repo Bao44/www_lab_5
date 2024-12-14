@@ -100,4 +100,14 @@ public class SkillResources implements IManagement<Skill, Long> {
                 ss.getAll()
         ));
     }
+
+    @PostMapping("/skill-name")
+    public ResponseEntity<Response> getSkillByName(@RequestBody String skillName) {
+        Skill result = ss.getSkillByName(skillName);
+        return ResponseEntity.ok(new Response(
+                result != null ? HttpStatus.OK.value() : HttpStatus.BAD_REQUEST.value(),
+                result != null ? "Get skill by name successfully" : "Skill name not found",
+                result
+        ));
+    }
 }

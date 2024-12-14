@@ -33,4 +33,8 @@ public class Skill {
         this.skillName = skillName;
         this.type = type;
     }
+
+    public Skill(@NonNull String skillName) {
+        this.skillName = skillName;
+    }
 }

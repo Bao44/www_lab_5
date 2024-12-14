@@ -5,11 +5,16 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 import vn.edu.iuh.fit.lab_5.backend.dtos.CandidateDTO;
+import vn.edu.iuh.fit.lab_5.backend.enums.SkillLevel;
+import vn.edu.iuh.fit.lab_5.backend.enums.SkillType;
+import vn.edu.iuh.fit.lab_5.backend.ids.CandidateSkillId;
 import vn.edu.iuh.fit.lab_5.backend.models.Address;
 import vn.edu.iuh.fit.lab_5.backend.models.Candidate;
 import vn.edu.iuh.fit.lab_5.backend.models.CandidateSkill;
+import vn.edu.iuh.fit.lab_5.backend.models.Skill;
 import vn.edu.iuh.fit.lab_5.frontend.models.AuthenticateModel;
 import vn.edu.iuh.fit.lab_5.frontend.models.CandidateModel;
+import vn.edu.iuh.fit.lab_5.frontend.models.SkillModel;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -22,6 +27,8 @@ public class CandidateController {
     private CandidateModel cm;
     @Autowired
     private AuthenticateModel authenticateModel;
+    @Autowired
+    private SkillModel skillModel;
 
     @GetMapping("{id}")
     public ModelAndView getCandidateDetail(@PathVariable("id") Long id) {
@@ -80,6 +87,76 @@ public class CandidateController {
             mv.setViewName("profile-update");
             mv.addObject("error", "Cập nhật thông tin không thành công");
         }
+        return mv;
+    }
+
+    @GetMapping("/profile-update/{id}/add-skill")
+    public ModelAndView getAddCandidateSkill(@PathVariable("id") Long id) {
+        ModelAndView mv = new ModelAndView("add-skill");
+        Candidate target = cm.getCandidateDetail(id);
+        mv.addObject("skills", skillModel.getAllSkills().stream().map(Skill::getSkillName).toList());
+        mv.addObject("candidate", target);
+        return mv;
+    }
+
+    @PostMapping("/profile-update/{id}/add-skill")
+    public ModelAndView addCandidateSkill(
+            @PathVariable("id") Long candidateId,
+            @RequestParam("inputSkillName") String skillName,
+            @RequestParam("inputSkillLevel") String skillLevel,
+            @RequestParam("inputMoreInfos") String moreInfos
+    ) {
+        ModelAndView mv = new ModelAndView("add-skill");
+        Candidate target = cm.getCandidateDetail(candidateId);
+        mv.addObject("candidate", target);
+
+        try {
+            // Gọi đến model để thêm kỹ năng
+            CandidateSkill candidateSkill = new CandidateSkill();
+            candidateSkill.setId(new CandidateSkillId(target, skillModel.getSkillBySkillName(skillName)));
+            candidateSkill.setSkillLevel(SkillLevel.valueOf(skillLevel));
+            candidateSkill.setMoreInfos(moreInfos);
+
+            CandidateSkill addedSkill = cm.addCandidateSkill(candidateSkill);
+
+            if (addedSkill != null) {
+                mv.setViewName("profile");
+                mv.addObject("candidate", target);
+                mv.addObject("candidate_skills", cm.getCandidateSkill(target.getId()));
+                mv.addObject("successMessage", "Thêm kỹ năng thành công");
+            } else {
+                mv.addObject("errorMessage", "Không thể thêm kỹ năng");
+            }
+        } catch (Exception e) {
+            mv.addObject("skills", skillModel.getAllSkills().stream().map(Skill::getSkillName).toList());
+            mv.addObject("candidate", target);
+            mv.addObject("errorMessage", "Đã xảy ra lỗi: " + e.getMessage());
+        }
+
+        return mv;
+    }
+
+    @PostMapping("/profile-update/{candidateId}/delete-skill/{skillName}")
+    public ModelAndView deleteSkill(@PathVariable("candidateId") Long candidateId, @PathVariable("skillName") String skillName) {
+        ModelAndView mv = new ModelAndView("profile");
+        Candidate target = cm.getCandidateDetail(candidateId);
+        mv.addObject("candidate", target);
+
+        Long skillId = skillModel.getSkillBySkillName(skillName).getId();
+
+        try {
+            boolean check = cm.deleteCandidateSkill(target.getId(), skillId);
+            if (!check) {
+                mv.addObject("candidate_skills", cm.getCandidateSkill(candidateId));
+                mv.addObject("errorMessage", "Không thể xóa kỹ năng");
+            }
+            mv.addObject("candidate_skills", cm.getCandidateSkill(candidateId));
+            mv.addObject("successMessage", "Xóa kỹ năng thành công");
+        } catch (Exception e) {
+            mv.addObject("candidate_skills", cm.getCandidateSkill(candidateId));
+            mv.addObject("errorMessage", "Không thể xóa kỹ năng: " + e.getMessage());
+        }
+
         return mv;
     }
 

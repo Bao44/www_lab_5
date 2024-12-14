@@ -1,0 +1,38 @@
+/* CSS cho phần này */
+.container {
+    max-width: 800px;
+    margin-top: 50px;
+}
+
+.profile-title {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #34495e;
+}
+
+.card.profile-card {
+    border-radius: 15px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+.card-header.profile-card-header {
+    background-color: #213A58;
+    color: #fff;
+    font-weight: bold;
+    font-size: 1.5rem;
+}
+
+.card-body {
+    font-size: 1rem;
+    color: #333;
+}
+
+.btn-primary {
+    background-color: #213A58;
+    border-color: #213A58;
+}
+
+.btn-secondary {
+    background-color: #ccc;
+    border-color: #ccc;
+}

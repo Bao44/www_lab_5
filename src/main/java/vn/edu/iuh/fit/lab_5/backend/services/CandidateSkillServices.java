@@ -5,6 +5,7 @@ import org.springframework.stereotype.Service;
 import vn.edu.iuh.fit.lab_5.backend.exceptions.EntityIdNotFoundException;
 import vn.edu.iuh.fit.lab_5.backend.ids.CandidateSkillId;
 import vn.edu.iuh.fit.lab_5.backend.models.CandidateSkill;
+import vn.edu.iuh.fit.lab_5.backend.models.Skill;
 import vn.edu.iuh.fit.lab_5.backend.repositories.CandidateSkillRepository;
 
 import java.util.ArrayList;
@@ -42,5 +43,14 @@ public class CandidateSkillServices {
 
     public Iterator<CandidateSkill> getAll() {
         return csr.findAll().iterator();
+    }
+
+    public boolean removeCandidateSkill(Long candidateId, Long skillId) {
+        Optional<CandidateSkill> candidateSkill = csr.findByCandidateIdAndSkillId(candidateId, skillId);
+        if (candidateSkill.isPresent()) {
+            csr.removeByCandidateIdAndSkillId(candidateId, skillId);
+            return true;
+        }
+        return false;
     }
 }

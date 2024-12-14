@@ -26,10 +26,14 @@
             Thông tin cá nhân
         </div>
         <div class="card-body">
-            <p><i class="fas fa-user profile-icon"></i><strong>Họ và tên:</strong> <span th:text="${candidate.fullName}"></span></p>
-            <p><i class="fas fa-envelope profile-icon"></i><strong>Email:</strong> <span th:text="${candidate.email}"></span></p>
-            <p><i class="fas fa-phone-alt profile-icon"></i><strong>Số điện thoại:</strong> <span th:text="${candidate.phone}"></span></p>
-            <p><i class="fas fa-birthday-cake profile-icon"></i><strong>Ngày sinh:</strong> <span th:text="${candidate.dob}"></span></p>
+            <p><i class="fas fa-user profile-icon"></i><strong>Họ và tên:</strong> <span
+                    th:text="${candidate.fullName}"></span></p>
+            <p><i class="fas fa-envelope profile-icon"></i><strong>Email:</strong> <span
+                    th:text="${candidate.email}"></span></p>
+            <p><i class="fas fa-phone-alt profile-icon"></i><strong>Số điện thoại:</strong> <span
+                    th:text="${candidate.phone}"></span></p>
+            <p><i class="fas fa-birthday-cake profile-icon"></i><strong>Ngày sinh:</strong> <span
+                    th:text="${candidate.dob}"></span></p>
             <p><i class="fas fa-map-marker-alt profile-icon"></i><strong>Địa chỉ:</strong>
                 <span th:if="${candidate.address != null}"
                       th:text="${candidate.address.street + ', ' + candidate.address.city + ', ' + candidate.address.country}"></span>
@@ -43,6 +47,10 @@
     <div class="card profile-card mb-4">
         <div class="card-header profile-card-header">
             Kỹ năng
+            <!-- Nút Thêm Kỹ năng -->
+            <a class="btn btn-primary btn-sm float-end"
+               th:href="@{'/candidate/detail/profile-update/' + ${candidate.id} + '/add-skill'}"><i class="fas fa-plus"></i> Thêm kỹ
+                năng</a>
         </div>
         <div class="card-body">
             <table class="table profile-table">
@@ -51,6 +59,9 @@
                     <th>Skill Name</th>
                     <th>Skill Level</th>
                     <th>Skill Type</th>
+                    <th>Information</th>
+                    <th></th>
+                    <th></th>
                 </tr>
                 </thead>
                 <tbody th:each="skill : ${candidate_skills}">
@@ -58,11 +69,33 @@
                     <td th:text="${skill.id.skill.skillName}"></td>
                     <td th:text="${skill.skillLevel}"></td>
                     <td th:text="${skill.id.skill.type}"></td>
+                    <td th:text="${skill.moreInfos}"></td>
+                    <td>
+                        <!-- Nút Xóa -->
+                        <form th:action="@{'/candidate/detail/profile-update/' + ${candidate.id} + '/delete-skill/' + ${skill.id.skill.skillName}}"
+                              method="post" style="display:inline;">
+                            <button type="submit" class="btn btn-danger btn-sm">
+                                <i class="fas fa-trash"></i> Xóa
+                            </button>
+                        </form>
+                    </td>
+
+                    <td>
+                        <!-- Nút update -->
+                        <form th:action="@{'/candidate/detail/profile-update/' + ${candidate.id} + '/delete-skill/' + ${skill.id.skill.skillName}}"
+                              method="post" style="display:inline;">
+                            <button type="submit" class="btn btn-sm btn-update">
+                                <i class="fa-regular fa-pen-to-square"></i> Cập nhật
+                            </button>
+                        </form>
+                    </td>
+
                 </tr>
                 </tbody>
             </table>
         </div>
     </div>
+
 
     <!-- Kinh nghiệm làm việc -->
     <div class="card profile-card mb-4">

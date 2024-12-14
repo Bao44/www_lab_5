@@ -4,6 +4,7 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;
+import org.springframework.web.util.UriComponentsBuilder;
 import vn.edu.iuh.fit.lab_5.backend.models.Response;
 import vn.edu.iuh.fit.lab_5.backend.models.Skill;
 
@@ -24,5 +25,10 @@ public class SkillModel {
     public List<Skill> getAllSkills() {
         Response response = rt.getForObject(URI.create(uri), Response.class);
         return mapper.convertValue(response.getData(), new TypeReference<List<Skill>>() {});
+    }
+
+    public Skill getSkillBySkillName(String skillName) {
+        Response response = rt.postForObject(URI.create(uri + "/skill-name"), skillName, Response.class);
+        return mapper.convertValue(response.getData(), Skill.class);
     }
 }

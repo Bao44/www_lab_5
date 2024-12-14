@@ -18,7 +18,6 @@ import java.util.Objects;
 @AllArgsConstructor
 @Embeddable
 public class CandidateSkillId implements java.io.Serializable {
-    private static final long serialVersionUID = 7959505589146447260L;
     @ManyToOne
     @JoinColumn(name = "can_id", nullable = false)
     private Candidate candidate;

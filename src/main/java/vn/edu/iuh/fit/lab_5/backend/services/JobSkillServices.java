@@ -1,9 +1,11 @@
 package vn.edu.iuh.fit.lab_5.backend.services;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import vn.edu.iuh.fit.lab_5.backend.exceptions.EntityIdNotFoundException;
 import vn.edu.iuh.fit.lab_5.backend.ids.JobSkillId;
+import vn.edu.iuh.fit.lab_5.backend.models.Candidate;
 import vn.edu.iuh.fit.lab_5.backend.models.JobSkill;
 import vn.edu.iuh.fit.lab_5.backend.repositories.JobSkillRepository;
 
@@ -50,5 +52,9 @@ public class JobSkillServices {
 
     public List<JobSkill> getAllSkillsByJob(Long jobId) {
         return jsr.findById_Job_Id(jobId);
+    }
+
+    public Iterator<JobSkill> getAll(Pageable pageable) {
+        return jsr.findAll(pageable).iterator();
     }
 }

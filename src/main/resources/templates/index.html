@@ -17,31 +17,27 @@
             <nav class="nav-bar">
                 <a href="/user-fe/search-job/job">Search Job</a>
                 <span th:switch="${role}">
-                <a th:case="ADMIN" href="/home-fe/admin">Admin Area</a>
-            </span>
-            <span th:if="${account_login != null}">
-                <a th:href="@{'/candidate/detail/profile/' + ${candidate.id}}"
-                   th:text="${candidate.getFullName()}" class="user-profile"></a>
-            </span>
+                    <a th:case="ADMIN" href="/admin">Admin Area</a>
+                </span>
+                <span th:if="${account_login != null}">
+                    <a th:href="@{'/candidate/detail/profile/' + ${candidate.id}}"
+                       th:text="${candidate.getFullName()}" class="user-profile"></a>
+                </span>
                 <span th:switch="${account_login}" class="auth-links">
-                <a th:case="null" href="/home-fe/login">Login</a>
-                <a th:case="*" href="/home-fe/logout">Logout</a>
-            </span>
+                    <a th:case="null" href="/login">Login</a>
+                    <a th:case="*" href="/logout">Logout</a>
+                </span>
             </nav>
         </div>
-
     </header>
 
     <main>
-        <!-- Search Bar -->
         <div class="search-bar-container">
             <input type="text" class="search-input" placeholder="Search for jobs...">
             <button class="search-button"><i class="fas fa-search"></i> Search</button>
         </div>
 
-        <!-- User Information and CV Creation Section -->
         <div class="info-cv-container">
-            <!-- User Information -->
             <div class="user-info" th:if="${account_login != null}">
                 <h2>Thông tin cá nhân</h2>
                 <p><strong>Name:</strong> <span th:text="${candidate.getFullName()}"></span></p>
@@ -52,8 +48,6 @@
                 <a class="btn-update-info" th:href="@{'/candidate/detail/profile/' + ${candidate.id}}">Xem hồ sơ</a>
             </div>
 
-
-            <!-- CV Creation -->
             <div class="cv-creation">
                 <div class="card shadow-sm">
                     <div class="card-body text-center">
@@ -62,8 +56,30 @@
                         <h5 class="card-title">Tạo CV thật đẹp cùng TopCV nhé</h5>
                         <p class="card-text">Tạo CV Online miễn phí với TopCV</p>
                         <a href="https://www.topcv.vn/mau-cv?tracking=1&source=gg&campaign_name=TOPCV_SEO_ADS&gad_source=1&gclid=EAIaIQobChMIxcX3_fijigMVS6NmAh2ehjzrEAAYAyAAEgJD__D_BwE"
-                           class="btn btn-outline-primary">Tạo CV</a>
+                           class="btn-create-cv">Tạo CV</a>
                     </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="job-skills-container">
+            <h2>Gợi ý cho bạn</h2>
+            <p th:if="${account_login == null}">Đăng nhập hoặc đăng kí để biết thêm chi tiết</p>
+            <div class="job-cards-container">
+                <div th:each="skill : ${jobSkills}" class="job-card">
+                    <h3 class="job-title" th:text="${skill.id.job.jobName}">Job Name</h3>
+                    <div class="skill-name">
+                        <span>Kỹ năng: </span>
+                        <span th:text="${skill.id.skill.skillName}">Skill Name</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pagination-container">
+                <div class="pagination">
+                    <span th:each="page : ${pages}" class="page-item">
+                        <a th:href="@{'/auth-fe/login/' + ${page}}" th:text="${page}" class="page-link"></a>
+                    </span>
                 </div>
             </div>
         </div>
@@ -83,7 +99,5 @@
         <p>&copy; 2024 Home - All Rights Reserved.</p>
     </div>
 </footer>
-
-<script src="/scripts/main.js"></script>
 </body>
 </html>
