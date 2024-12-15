@@ -13,16 +13,14 @@
 </head>
 <body>
 <div class="container mt-5">
-    <!-- Header Section -->
     <div class="text-center mb-5">
-        <h1 class="profile-title">Candidate Detail</h1>
+        <h1 class="profile-title">Thông tin chi tiết</h1>
         <hr class="divider">
     </div>
 
-    <!-- Candidate Information Section -->
     <div class="card profile-card mb-4">
         <div class="card-header profile-card-header">
-            Candidate Information
+            Thông tin ứng viên
         </div>
         <div class="card-body">
             <div class="row mb-3">
@@ -45,6 +43,21 @@
                 <div class="col-md-3 font-weight-bold">Address:</div>
                 <div class="col-md-9" th:text="${candidate.address.street} + ' - ' + ${candidate.address.country} + ' - ' + ${candidate.address.zipcode}"></div>
             </div>
+
+            <!-- Thêm phần Gửi mail đến ứng viên -->
+            <div class="row mb-3">
+                <div class="col-md-3 font-weight-bold">Gửi mail đến ứng viên</div>
+                <div class="col-md-9">
+                    <!-- Form gửi email đến ứng viên -->
+                    <form th:action="@{'/candidate/detail/' + ${candidate.id} + '/sendEmail'}" method="post">
+                        <input type="hidden" name="candidateId" th:value="${candidate.id}" />
+                        <button type="submit" class="btn btn-info btn-sm">
+                            <i class="fas fa-envelope"></i> Gửi Mail đến ứng viên
+                        </button>
+                    </form>
+                </div>
+            </div>
+
         </div>
     </div>
 
@@ -54,18 +67,6 @@
             Candidate Skills
         </div>
         <div class="card-body">
-<!--            <div class="row mb-3">-->
-<!--                <div class="col-md-3 font-weight-bold">Skill Name</div>-->
-<!--                <div class="col-md-3 font-weight-bold">Skill Level</div>-->
-<!--                <div class="col-md-3 font-weight-bold">Skill Type</div>-->
-<!--            </div>-->
-<!--            <div th:each="skill : ${candidate_skills}">-->
-<!--                <div class="row mb-3">-->
-<!--                    <div class="col-md-3" th:text="${skill.id.skill.skillName}"></div>-->
-<!--                    <div class="col-md-3" th:text="${skill.skillLevel}"></div>-->
-<!--                    <div class="col-md-3" th:text="${skill.id.skill.type}"></div>-->
-<!--                </div>-->
-<!--            </div>-->
             <table class="table profile-table">
                 <thead>
                 <tr>
@@ -87,7 +88,6 @@
         </div>
     </div>
 
-    <!-- Candidate Experience Section -->
     <div class="card profile-card mb-4">
         <div class="card-header profile-card-header">
             Candidate Experience
@@ -113,6 +113,16 @@
             </table>
         </div>
     </div>
+
+    <script>
+        var emailSent = [[${emailSent}]];
+
+        if (emailSent) {
+            // Hiển thị alert nếu gửi email thành công
+            alert("Đã gửi mail thành công đến ứng viên!");
+        }
+    </script>
+
 </div>
 </body>
 </html>

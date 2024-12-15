@@ -1,12 +1,15 @@
 package vn.edu.iuh.fit.lab_5.frontend.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.mail.SimpleMailMessage;
+import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 import vn.edu.iuh.fit.lab_5.backend.dtos.CandidateDTO;
 import vn.edu.iuh.fit.lab_5.backend.enums.SkillLevel;
 import vn.edu.iuh.fit.lab_5.backend.enums.SkillType;
+import vn.edu.iuh.fit.lab_5.backend.exceptions.EntityIdNotFoundException;
 import vn.edu.iuh.fit.lab_5.backend.ids.CandidateSkillId;
 import vn.edu.iuh.fit.lab_5.backend.models.Address;
 import vn.edu.iuh.fit.lab_5.backend.models.Candidate;
@@ -29,6 +32,8 @@ public class CandidateController {
     private AuthenticateModel authenticateModel;
     @Autowired
     private SkillModel skillModel;
+    @Autowired
+    private JavaMailSender mailSender;
 
     @GetMapping("{id}")
     public ModelAndView getCandidateDetail(@PathVariable("id") Long id) {
@@ -163,4 +168,27 @@ public class CandidateController {
         return mv;
     }
 
+
+    @PostMapping("{id}/sendEmail")
+    public ModelAndView sendEmail(@PathVariable("id") Long id) {
+        ModelAndView mv = new ModelAndView("admin/candidate/candidate-detail");
+        Candidate target = cm.getCandidateDetail(id);
+
+        // Tạo nội dung email
+        String subject = "Thông tin ứng viên: " + target.getFullName();
+        String text = "Kính gửi " + target.getFullName() + ",\n\n" +
+                "Đây là email gửi từ hệ thống quản lý ứng viên.\n\n" +
+                "Cảm ơn bạn đã tham gia ứng tuyển.";
+
+        // Gửi email
+        SimpleMailMessage message = new SimpleMailMessage();
+        message.setTo(target.getEmail());
+        message.setSubject(subject);
+        message.setText(text);
+        mailSender.send(message);
+
+        mv.addObject("candidate", target);
+        mv.addObject("emailSent", true);
+        return mv;
+    }
 }

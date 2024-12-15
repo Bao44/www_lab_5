@@ -8,7 +8,6 @@
 <body>
 <div>
     <h1 class="header">Đăng nhập</h1>
-<!--    <form action="/auth-fe/login" method="post" id="formLogin">-->
     <form th:action="@{'/auth-fe/login/' + ${0}}" method="post" id="formLogin">
         <div class="email">
             <label class="textEmail">Email:</label>

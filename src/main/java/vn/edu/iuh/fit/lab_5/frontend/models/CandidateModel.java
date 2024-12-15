@@ -95,4 +95,9 @@ public class CandidateModel {
         return mapper.convertValue(response.getData(), new TypeReference<List<Candidate>>() {
         });
     }
+
+    public boolean getSendEmail() {
+        Response response = rt.getForObject(URI.create(uri + "/send-email"), Response.class);
+        return mapper.convertValue(response.getData(), Boolean.class);
+    }
 }
