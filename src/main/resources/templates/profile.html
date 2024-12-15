@@ -72,11 +72,13 @@
                     <td th:text="${skill.moreInfos}"></td>
                     <td>
                         <!-- Nút Xóa -->
-                        <form th:action="@{'/candidate/detail/profile-update/' + ${candidate.id} + '/delete-skill/' + ${skill.id.skill.skillName}}"
+                        <form action="/candidate/detail/profile-update/delete-skill"
                               method="post" style="display:inline;">
                             <button type="submit" class="btn btn-danger btn-sm">
                                 <i class="fas fa-trash"></i> Xóa
                             </button>
+                            <input name="candidateId" th:value="${candidate.id}" type="hidden"/>
+                            <input name="skillName" th:value="${skill.id.skill.skillName}" type="hidden"/>
                         </form>
                     </td>
 

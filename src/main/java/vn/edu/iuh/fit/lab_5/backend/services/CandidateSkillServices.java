@@ -48,7 +48,7 @@ public class CandidateSkillServices {
     public boolean removeCandidateSkill(Long candidateId, Long skillId) {
         Optional<CandidateSkill> candidateSkill = csr.findByCandidateIdAndSkillId(candidateId, skillId);
         if (candidateSkill.isPresent()) {
-            csr.removeByCandidateIdAndSkillId(candidateId, skillId);
+            csr.delete(candidateSkill.get());
             return true;
         }
         return false;

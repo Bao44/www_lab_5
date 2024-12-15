@@ -136,10 +136,13 @@ public class CandidateController {
         return mv;
     }
 
-    @PostMapping("/profile-update/{candidateId}/delete-skill/{skillName}")
-    public ModelAndView deleteSkill(@PathVariable("candidateId") Long candidateId, @PathVariable("skillName") String skillName) {
+    @PostMapping("/profile-update/delete-skill")
+    public ModelAndView deleteSkill(
+            @RequestParam("candidateId") String candidateId,
+            @RequestParam("skillName") String skillName
+    ) {
         ModelAndView mv = new ModelAndView("profile");
-        Candidate target = cm.getCandidateDetail(candidateId);
+        Candidate target = cm.getCandidateDetail(Long.parseLong(candidateId));
         mv.addObject("candidate", target);
 
         Long skillId = skillModel.getSkillBySkillName(skillName).getId();
@@ -147,13 +150,13 @@ public class CandidateController {
         try {
             boolean check = cm.deleteCandidateSkill(target.getId(), skillId);
             if (!check) {
-                mv.addObject("candidate_skills", cm.getCandidateSkill(candidateId));
+                mv.addObject("candidate_skills", cm.getCandidateSkill(Long.parseLong(candidateId)));
                 mv.addObject("errorMessage", "Không thể xóa kỹ năng");
             }
-            mv.addObject("candidate_skills", cm.getCandidateSkill(candidateId));
+            mv.addObject("candidate_skills", cm.getCandidateSkill(Long.parseLong(candidateId)));
             mv.addObject("successMessage", "Xóa kỹ năng thành công");
         } catch (Exception e) {
-            mv.addObject("candidate_skills", cm.getCandidateSkill(candidateId));
+            mv.addObject("candidate_skills", cm.getCandidateSkill(Long.parseLong(candidateId)));
             mv.addObject("errorMessage", "Không thể xóa kỹ năng: " + e.getMessage());
         }
 

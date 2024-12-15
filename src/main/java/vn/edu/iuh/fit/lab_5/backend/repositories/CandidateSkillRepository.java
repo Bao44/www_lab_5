@@ -12,9 +12,6 @@ import java.util.Optional;
 
 @Repository
 public interface CandidateSkillRepository extends JpaRepository<CandidateSkill, CandidateSkillId> {
-    @Modifying
-    @Query("DELETE FROM CandidateSkill c WHERE c.id.candidate.id = ?1 AND c.id.skill.id = ?2")
-    void removeByCandidateIdAndSkillId(Long candidateId, Long skillId);
     @Query("SELECT c FROM CandidateSkill c WHERE c.id.candidate.id = ?1 AND c.id.skill.id = ?2")
     Optional<CandidateSkill> findByCandidateIdAndSkillId(Long candidateId, Long skillId);
     List<CandidateSkill> findById_Candidate_Id(Long id);
