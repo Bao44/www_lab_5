@@ -81,7 +81,11 @@ public class CandidateSkillResources implements IManagement<CandidateSkill, Cand
     @GetMapping
     @Override
     public ResponseEntity<Response> getAll() {
-        return null;
+        return ResponseEntity.ok(new Response(
+                HttpStatus.OK.value(),
+                "Get all candidate skill successfully",
+                css.getAll()
+        ));
     }
 
     @GetMapping("/remove-candidate-skill")

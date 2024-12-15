@@ -5,10 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
-import vn.edu.iuh.fit.lab_5.backend.models.Address;
-import vn.edu.iuh.fit.lab_5.backend.models.Candidate;
-import vn.edu.iuh.fit.lab_5.backend.models.Job;
-import vn.edu.iuh.fit.lab_5.backend.models.JobSkill;
+import vn.edu.iuh.fit.lab_5.backend.models.*;
 import vn.edu.iuh.fit.lab_5.frontend.models.*;
 
 import java.time.LocalDate;
@@ -46,6 +43,7 @@ public class AuthenticateController {
         }
 
         List<JobSkill> jobSkills = jobSkillModel.getAllJobSkills();
+        List<CandidateSkill> candidateSkills = candidateModel.getAllCandidateSkills();
 
         List<Job> jobs = jm.getAllJobs();
         int pageSize = jobs.size() / 12;
@@ -55,19 +53,30 @@ public class AuthenticateController {
             pages.add((i + 1) + "");
         }
 
+        List<Candidate> candidates = candidateModel.getAllCandidates();
+        List<String> pagesADMIN = new ArrayList<>();
+        for (int i = 0; i <= pageSize; ++i) {
+            pagesADMIN.add((i + 1) + "");
+        }
+
         Candidate id = candidateModel.getCandidateDetail(target.getId());
         Candidate candidate = authenticateModel.getCandidate(id.getId());
         request.getServletContext().setAttribute("candidate", candidate);
+        request.getServletContext().setAttribute("candidates", candidates);
+        request.getServletContext().setAttribute("candidateSkills", candidateSkills);
         request.getServletContext().setAttribute("role", target.getRole().toString());
         request.getServletContext().setAttribute("skills", skillModel.getAllSkills());
         request.getServletContext().setAttribute("jobSkills", jobSkills);
         mv.addObject("candidate", candidate);
+        mv.addObject("candidates", candidateModel.getCandidatesForPage(Integer.parseInt(page) == 0 ? 0 : Integer.parseInt(page) - 1));
+        mv.addObject("candidateSkills", candidateSkills);
         mv.addObject("role", target.getRole().toString());
         mv.addObject("account_login", target);
         mv.addObject("skills", skillModel.getAllSkills());
         mv.addObject("jobSkills", jobSkills);
         mv.addObject("jobs", jobModel.getJobForPage(Integer.parseInt(page) == 0 ? 0 : Integer.parseInt(page) - 1));
         mv.addObject("pages", pages);
+        mv.addObject("pagesADMIN", pagesADMIN);
 
         return mv;
     }
@@ -83,6 +92,7 @@ public class AuthenticateController {
         Candidate target = am.checkLogin(email, password);
 
         List<JobSkill> jobSkills = jobSkillModel.getAllJobSkills();
+        List<CandidateSkill> candidateSkills = candidateModel.getAllCandidateSkills();
 
         List<Job> jobs = jm.getAllJobs();
         int pageSize = jobs.size() / 12;
@@ -91,12 +101,19 @@ public class AuthenticateController {
         for (int i = 0; i <= pageSize; ++i) {
             pages.add((i + 1) + "");
         }
+        List<Candidate> candidates = candidateModel.getAllCandidates();
+        List<String> pagesADMIN = new ArrayList<>();
+        for (int i = 0; i <= pageSize; ++i) {
+            pagesADMIN.add((i + 1) + "");
+        }
+
         if (target != null) {
             Candidate id = candidateModel.getCandidateDetail(target.getId());
             Candidate candidate = authenticateModel.getCandidate(id.getId());
             request.getServletContext().setAttribute("candidate", candidate);
             mv.addObject("candidate", candidate);
         }
+        request.getServletContext().setAttribute("candidateSkills", candidateSkills);
         request.getServletContext().setAttribute("account_login", target);
         request.getServletContext().setAttribute("role", target.getRole().toString());
         request.getServletContext().setAttribute("skills", skillModel.getAllSkills());
@@ -107,6 +124,9 @@ public class AuthenticateController {
         mv.addObject("jobSkills", jobSkills);
         mv.addObject("jobs", jobModel.getJobForPage(Integer.parseInt(page) == 0 ? 0 : Integer.parseInt(page) - 1));
         mv.addObject("pages", pages);
+        mv.addObject("pagesADMIN", pagesADMIN);
+        mv.addObject("candidates", candidateModel.getCandidatesForPage(Integer.parseInt(page) == 0 ? 0 : Integer.parseInt(page) - 1));
+        mv.addObject("candidateSkills", candidateSkills);
         return mv;
     }
 

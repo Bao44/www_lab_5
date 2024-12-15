@@ -83,4 +83,16 @@ public class CandidateModel {
                 .toUri();
         return rt.getForObject(uri, Boolean.class);
     }
+
+    public List<CandidateSkill> getAllCandidateSkills() {
+        Response response = rt.getForObject(URI.create("http://localhost:8080/api/candidate-skill"), Response.class);
+        return mapper.convertValue(response.getData(), new TypeReference<List<CandidateSkill>>() {
+        });
+    }
+
+    public List<Candidate> getAllCandidates() {
+        Response response = rt.getForObject(URI.create("http://localhost:8080/api/candidate"), Response.class);
+        return mapper.convertValue(response.getData(), new TypeReference<List<Candidate>>() {
+        });
+    }
 }

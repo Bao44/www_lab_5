@@ -37,6 +37,7 @@
             <button class="search-button"><i class="fas fa-search"></i> Tìm</button>
         </div>
 
+
         <div class="info-cv-container">
             <div class="user-info" th:if="${account_login != null}">
                 <h2>Thông tin cá nhân</h2>
@@ -45,55 +46,97 @@
                 <p><strong>Số điện thoại:</strong> <span th:text="${candidate.phone}"></span></p>
                 <p><strong>Ngày sinh:</strong> <span th:text="${candidate.dob}"></span></p>
 
-                <a class="btn-update-info" th:href="@{'/candidate/detail/profile/' + ${candidate.id}}">Xem hồ sơ</a>
+                <a class="btn-update-info" th:href="@{'/candidate/detail/profile/' + ${candidate.id}}">Xem hồ
+                    sơ</a>
             </div>
-
-            <div class="cv-creation">
-                <div class="card shadow-sm">
-                    <div class="card-body text-center">
-                        <img src="https://png.pngtree.com/png-clipart/20230810/original/pngtree-vacancy-rgb-color-icon-cv-concept-recruit-vector-picture-image_10262216.png"
-                             alt="CV Creation Icon" class="mb-3" width="60">
-                        <h5 class="card-title">Tạo CV thật đẹp cùng TopCV nhé</h5>
-                        <p class="card-text">Tạo CV Online miễn phí với TopCV</p>
-                        <a href="https://www.topcv.vn/mau-cv?tracking=1&source=gg&campaign_name=TOPCV_SEO_ADS&gad_source=1&gclid=EAIaIQobChMIxcX3_fijigMVS6NmAh2ehjzrEAAYAyAAEgJD__D_BwE"
-                           class="btn-create-cv">Tạo CV</a>
+            <div th:switch="${role}">
+                <div th:case="USER">
+                    <div class="cv-creation">
+                        <div class="card shadow-sm">
+                            <div class="card-body text-center">
+                                <img src="https://png.pngtree.com/png-clipart/20230810/original/pngtree-vacancy-rgb-color-icon-cv-concept-recruit-vector-picture-image_10262216.png"
+                                     alt="CV Creation Icon" class="mb-3" width="60">
+                                <h5 class="card-title">Tạo CV thật đẹp cùng TopCV nhé</h5>
+                                <p class="card-text">Tạo CV Online miễn phí với TopCV</p>
+                                <a href="https://www.topcv.vn/mau-cv?tracking=1&source=gg&campaign_name=TOPCV_SEO_ADS&gad_source=1&gclid=EAIaIQobChMIxcX3_fijigMVS6NmAh2ehjzrEAAYAyAAEgJD__D_BwE"
+                                   class="btn-create-cv">Tạo CV</a>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
 
-        <div class="job-skills-container">
-            <h2>Gợi ý cho bạn</h2>
-            <p th:if="${account_login == null}">Đăng nhập hoặc đăng kí để biết thêm chi tiết</p>
-            <div class="job-cards-container">
-                <div th:each="job : ${jobs}" class="job-card">
-                    <h3 class="job-title" th:text="${job.jobName}"></h3>
-                    <p>
-                        <span>Thông tin công việc: </span>
-                        <span th:text="${job.jobDesc}"></span>
-                    </p>
-                    <p>
-                        <span>Tên công ty: </span>
-                        <span th:text="${job.company.getCompName()}"></span>
-                    </p>
-                    <div>
-                        <span>Kỹ năng: </span>
-                        <span class="skill-name" th:each="jobSkill : ${jobSkills}" th:if="${job.id == jobSkill.id.job.id}" th:text="${jobSkill.id.skill.skillName}"></span>
+        <div th:switch="${role}">
+            <div th:case="USER">
+                <div class="job-skills-container">
+                    <h2>Gợi ý cho bạn</h2>
+                    <div class="job-cards-container">
+                        <div th:each="job : ${jobs}" class="job-card">
+                            <h3 class="job-title" th:text="${job.jobName}"></h3>
+                            <p>
+                                <span>Thông tin công việc: </span>
+                                <span th:text="${job.jobDesc}"></span>
+                            </p>
+                            <p>
+                                <span>Tên công ty: </span>
+                                <span th:text="${job.company.getCompName()}"></span>
+                            </p>
+                            <div>
+                                <span>Kỹ năng: </span>
+                                <span class="skill-name" th:each="jobSkill : ${jobSkills}"
+                                      th:if="${job.id == jobSkill.id.job.id}"
+                                      th:text="${jobSkill.id.skill.skillName}"></span>
+                            </div>
+                        </div>
                     </div>
                 </div>
-            </div>
-
-
-
-            <div class="pagination-container">
-                <div class="pagination">
+                <div class="pagination-container">
+                    <div class="pagination">
                     <span th:each="page : ${pages}" class="page-item">
                         <a th:href="@{'/auth-fe/login/' + ${page}}" th:text="${page}" class="page-link"></a>
                     </span>
+                    </div>
+                </div>
+            </div>
+
+
+            <div th:case="ADMIN">
+                <div class="job-skills-container">
+                    <h2>Các ứng viên phù hợp</h2>
+                    <div th:each="ca : ${candidates}" class="job-cards-container">
+                        <div th:if="${ca.id != candidate.id}"  class="job-card">
+                            <h3 class="job-title" th:text="${ca.fullName}"></h3>
+                            <p>
+                                <span>Thông tin ứng viên: </span>
+                                <span th:text="${ca.email}"></span>
+                            </p>
+                            <p>
+                                <span>Địa chỉ: </span>
+                                <span th:text="${ca.address.city}"></span>
+                                <span th:text="${ca.address.street}"></span>
+                            </p>
+                            <div>
+                                <span>Kỹ năng: </span>
+                                <span class="skill-name" th:each="candidateSkill : ${candidateSkills}"
+                                      th:if="${candidateSkill.id.candidate.id == ca.id}"
+                                      th:text="${candidateSkill.id.skill.skillName}"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="pagination-container">
+                    <div class="pagination">
+                    <span th:each="page : ${pages}" class="page-item">
+                        <a th:href="@{'/auth-fe/login/' + ${page}}" th:text="${page}" class="page-link"></a>
+                    </span>
+                    </div>
                 </div>
             </div>
         </div>
+
     </main>
+
 </div>
 
 <footer>
