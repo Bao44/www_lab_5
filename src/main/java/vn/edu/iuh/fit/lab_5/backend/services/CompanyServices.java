@@ -42,4 +42,8 @@ public class CompanyServices {
     public Iterator<Company> getAll() {
         return cr.findAll().iterator();
     }
+
+    public Company getCompanyByEmail(String email) {
+        return cr.findByEmail(email);
+    }
 }

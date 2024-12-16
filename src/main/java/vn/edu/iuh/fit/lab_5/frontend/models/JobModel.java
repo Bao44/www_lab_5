@@ -7,6 +7,7 @@ import org.springframework.web.client.RestTemplate;
 import vn.edu.iuh.fit.lab_5.backend.models.Job;
 import vn.edu.iuh.fit.lab_5.backend.models.JobSkill;
 import vn.edu.iuh.fit.lab_5.backend.models.Response;
+import vn.edu.iuh.fit.lab_5.backend.services.JobServices;
 
 import java.net.URI;
 import java.util.List;
@@ -17,6 +18,11 @@ public class JobModel {
     private final RestTemplate rt = new RestTemplate();
     private final String uri = "http://localhost:8080/api/job";
     private final ObjectMapper mapper = new ObjectMapper();
+
+    public Job addJob(Job job) {
+        Response response = rt.postForObject(URI.create(uri), job, Response.class);
+        return mapper.convertValue(response.getData(), Job.class);
+    }
 
     public List<Job> getAllJobs() {
         Response response = rt.getForObject(URI.create(uri), Response.class);

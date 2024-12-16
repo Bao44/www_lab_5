@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.*;
 import vn.edu.iuh.fit.lab_5.backend.ids.JobSkillId;
 import vn.edu.iuh.fit.lab_5.backend.models.JobSkill;
 import vn.edu.iuh.fit.lab_5.backend.models.Response;
+import vn.edu.iuh.fit.lab_5.backend.models.Skill;
 import vn.edu.iuh.fit.lab_5.backend.resources.IManagement;
 import vn.edu.iuh.fit.lab_5.backend.services.JobSkillServices;
 
@@ -23,10 +24,49 @@ public class JobSkillResources implements IManagement<JobSkill, JobSkillId> {
     @Autowired
     private JobSkillServices jss;
 
+    @PostMapping("/add")
+    public ResponseEntity<?> addJobSkill(@RequestBody JobSkill jobSkill) {
+        log.info("Calling insert job-skill");
+        try {
+            JobSkill output = jss.add(jobSkill);
+            log.info("Insert skill successfully");
+            return ResponseEntity.ok(new Response(
+                    HttpStatus.OK.value(),
+                    "Insert job-skill successfully",
+                    output
+            ));
+        } catch (Exception e) {
+            log.error("Insert job-skill failed");
+            log.error("Error: ", e);
+            return ResponseEntity.ok(new Response(
+                    HttpStatus.OK.value(),
+                    "Insert job-skill failed!",
+                    null
+            ));
+        }
+    }
+
     @PostMapping
     @Override
     public ResponseEntity<Response> insert(@RequestBody JobSkill jobSkill) {
-        return null;
+        log.info("Calling insert job-skill");
+        try {
+            JobSkill output = jss.add(jobSkill);
+            log.info("Insert skill successfully");
+            return ResponseEntity.ok(new Response(
+                    HttpStatus.OK.value(),
+                    "Insert job-skill successfully",
+                    output
+            ));
+        } catch (Exception e) {
+            log.error("Insert job-skill failed");
+            log.error("Error: ", e);
+            return ResponseEntity.ok(new Response(
+                    HttpStatus.OK.value(),
+                    "Insert job-skill failed!",
+                    null
+            ));
+        }
     }
 
     @PostMapping("/list")

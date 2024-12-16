@@ -20,4 +20,6 @@ public class CompanyModel {
         Response response = rt.getForObject(URI.create(url), Response.class);
         return mapper.convertValue(response.getData(), new TypeReference<List<Company>>() {});
     }
+
+
 }

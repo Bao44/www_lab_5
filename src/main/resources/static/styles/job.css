@@ -1,0 +1,130 @@
+/* Global reset and body styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f0f8ff;
+    color: #333;
+    line-height: 1.6;
+}
+
+/* Container for the form */
+form {
+    max-width: 900px;
+    margin: 30px auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* Headings */
+h3 {
+    font-size: 1.6rem;
+    color: #213A58;
+    border-bottom: 2px solid #213A58;
+    padding-bottom: 5px;
+    margin-bottom: 20px;
+}
+
+/* Label styles */
+label {
+    display: block;
+    margin: 10px 0 5px;
+    font-weight: bold;
+    color: #333;
+}
+
+/* Input, textarea, and select elements */
+input, textarea, select {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 15px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-size: 1rem;
+    background-color: #f9f9f9;
+}
+
+/* Specific styles for textarea */
+textarea {
+    resize: vertical;
+}
+
+/* Button styles */
+button {
+    background-color: #213A58; /* Primary button color */
+    color: white;
+    padding: 12px 20px;
+    font-size: 1.1rem;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #1A2D44;
+}
+
+button:focus {
+    outline: none;
+}
+
+/* Skill selection container */
+#skillsContainer .skillForm {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+#skillsContainer .skillForm select {
+    width: 80%;
+}
+
+#skillsContainer .skillForm button {
+    background-color: #dc3545;
+    color: white;
+    padding: 8px 15px;
+    font-size: 1rem;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+#skillsContainer .skillForm button:hover {
+    background-color: #a71d2a;
+}
+
+/* Template for adding skills */
+template {
+    display: none;
+}
+
+/* Add another skill button */
+#addSkillBtn {
+    background-color: #28a745;
+    color: white;
+    padding: 12px 20px;
+    font-size: 1.1rem;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-bottom: 20px;
+}
+
+#addSkillBtn:hover {
+    background-color: #218838;
+}
+
+/* Style for when input fields are focused */
+input:focus, textarea:focus, select:focus {
+    border-color: #007BFF;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+}

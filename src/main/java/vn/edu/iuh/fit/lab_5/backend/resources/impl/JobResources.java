@@ -9,6 +9,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import vn.edu.iuh.fit.lab_5.backend.models.Job;
 import vn.edu.iuh.fit.lab_5.backend.models.Response;
+import vn.edu.iuh.fit.lab_5.backend.models.Skill;
 import vn.edu.iuh.fit.lab_5.backend.resources.IManagement;
 import vn.edu.iuh.fit.lab_5.backend.services.JobServices;
 
@@ -25,7 +26,24 @@ public class JobResources implements IManagement<Job,Long> {
     @PostMapping
     @Override
     public ResponseEntity<Response> insert(@RequestBody Job job) {
-        return null;
+        log.info("Calling insert job");
+        try {
+            Job output = js.add(job);
+            log.info("Insert job successfully");
+            return ResponseEntity.ok(new Response(
+                    HttpStatus.OK.value(),
+                    "Insert job successfully",
+                    output
+            ));
+        } catch (Exception e) {
+            log.error("Insert job failed");
+            log.error("Error: ", e);
+            return ResponseEntity.ok(new Response(
+                    HttpStatus.OK.value(),
+                    "Insert job failed!",
+                    null
+            ));
+        }
     }
 
     @Override

@@ -34,6 +34,13 @@ public class Skill {
         this.type = type;
     }
 
+    public Skill(Long id, String skillDescription, @NonNull String skillName, @NonNull SkillType type) {
+        this.id = id;
+        this.skillDescription = skillDescription;
+        this.skillName = skillName;
+        this.type = type;
+    }
+
     public Skill(@NonNull String skillName) {
         this.skillName = skillName;
     }

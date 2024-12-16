@@ -5,6 +5,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;
 import vn.edu.iuh.fit.lab_5.backend.models.Candidate;
+import vn.edu.iuh.fit.lab_5.backend.models.CandidateSkill;
 import vn.edu.iuh.fit.lab_5.backend.models.JobSkill;
 import vn.edu.iuh.fit.lab_5.backend.models.Response;
 
@@ -17,6 +18,15 @@ public class JobSkillModel {
     private final RestTemplate rt = new RestTemplate();
     private final String uri = "http://localhost:8080/api/job-skill";
     private final ObjectMapper mapper = new ObjectMapper();
+
+    public JobSkill addJobSkills(JobSkill jobSkills) {
+        Response response = rt.postForObject(
+                URI.create("http://localhost:8080/api/job-skill/add"),
+                jobSkills,
+                Response.class
+        );
+        return mapper.convertValue(response.getData(), JobSkill.class);
+    }
 
     public List<JobSkill> getJobSkillForPage(int page) {
         Response response = rt.getForObject(URI.create(uri + "/page/" + page), Response.class);

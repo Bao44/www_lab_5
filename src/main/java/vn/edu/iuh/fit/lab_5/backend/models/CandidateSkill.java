@@ -12,7 +12,8 @@ import vn.edu.iuh.fit.lab_5.backend.ids.CandidateSkillId;
 @RequiredArgsConstructor
 @NoArgsConstructor
 public class CandidateSkill {
-    @EmbeddedId @NonNull
+    @EmbeddedId
+    @NonNull
     private CandidateSkillId id;
 
     @Column(name = "more_infos", length = 1000)
@@ -22,4 +23,12 @@ public class CandidateSkill {
     @Column(name = "skill_level", nullable = false)
     @NonNull
     private SkillLevel skillLevel;
+
+    @ManyToOne
+    @JoinColumn(name = "can_id", insertable = false, updatable = false)
+    private Candidate candidate;
+
+    @ManyToOne
+    @JoinColumn(name = "skill_id", insertable = false, updatable = false)
+    private Skill skill;
 }

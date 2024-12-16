@@ -5,6 +5,8 @@ import lombok.*;
 import vn.edu.iuh.fit.lab_5.backend.enums.SkillLevel;
 import vn.edu.iuh.fit.lab_5.backend.ids.JobSkillId;
 
+import java.util.Objects;
+
 @Getter
 @Setter
 @Entity

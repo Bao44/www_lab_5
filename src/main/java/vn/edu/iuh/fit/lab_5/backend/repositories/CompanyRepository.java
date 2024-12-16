@@ -6,4 +6,5 @@ import vn.edu.iuh.fit.lab_5.backend.models.Company;
 
 @Repository
 public interface CompanyRepository extends JpaRepository<Company, Long> {
+    Company findByEmail(String email);
 }
