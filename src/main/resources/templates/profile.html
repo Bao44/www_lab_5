@@ -118,8 +118,8 @@
                 <tr>
                     <td th:text="${experience.companyName}"></td>
                     <td th:text="${experience.role}"></td>
-                    <td th:text="${#dates.format(experience.fromDate, 'dd/MM/yyyy')}"></td>
-                    <td th:text="${#dates.format(experience.toDate, 'dd/MM/yyyy')}"></td>
+                    <td th:text="${experience.fromDate}"></td>
+                    <td th:text="${experience.toDate}"></td>
                 </tr>
                 </tbody>
             </table>
