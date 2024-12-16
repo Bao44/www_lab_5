@@ -175,10 +175,24 @@ public class CandidateController {
         Candidate target = cm.getCandidateDetail(id);
 
         // Tạo nội dung email
-        String subject = "Thông tin ứng viên: " + target.getFullName();
+        String subject = "Thư mời hợp tác từ Công ty ABC - Dành cho ứng viên: " + target.getFullName();
         String text = "Kính gửi " + target.getFullName() + ",\n\n" +
-                "Đây là email gửi từ hệ thống quản lý ứng viên.\n\n" +
-                "Cảm ơn bạn đã tham gia ứng tuyển.";
+                "Lời đầu tiên, Công ty ABC xin gửi tới bạn lời chào trân trọng và lời cảm ơn vì đã quan tâm đến vị trí tuyển dụng tại công ty chúng tôi.\n\n" +
+                "Qua quá trình xem xét hồ sơ của bạn, chúng tôi rất ấn tượng với những kỹ năng và kinh nghiệm mà bạn đã tích lũy được trong thời gian qua. " +
+                "Chúng tôi tin rằng bạn là một ứng viên tiềm năng, phù hợp với yêu cầu và văn hóa làm việc của Công ty ABC.\n\n" +
+                "Hiện tại, công ty chúng tôi đang tìm kiếm những nhân sự có năng lực và tâm huyết cho vị trí [Tên vị trí tuyển dụng cụ thể]. " +
+                "Nếu bạn quan tâm, chúng tôi rất mong nhận được phản hồi từ bạn để có thể sắp xếp một buổi trao đổi chi tiết hơn.\n\n" +
+                "Dưới đây là thông tin liên hệ của chúng tôi:\n" +
+                "- Email: hrabc@gmail.com\n" +
+                "- Số điện thoại: (0123) 456-789\n" +
+                "- Website: www.abc.com\n\n" +
+                "Rất mong nhận được phản hồi từ bạn trong thời gian sớm nhất. Nếu có bất kỳ thắc mắc nào, bạn vui lòng liên hệ với chúng tôi qua email hoặc số điện thoại trên.\n\n" +
+                "Chúng tôi hy vọng sẽ có cơ hội hợp tác và làm việc cùng bạn.\n\n" +
+                "Trân trọng,\n" +
+                "Tran Van Teo\n" +
+                "Phòng Nhân sự - Công ty ABC\n" +
+                "Email: hrabc@gmail.com\n" +
+                "Điện thoại: (0123) 456-789";
 
         // Gửi email
         SimpleMailMessage message = new SimpleMailMessage();

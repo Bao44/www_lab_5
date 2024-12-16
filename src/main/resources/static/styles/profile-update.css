@@ -55,7 +55,7 @@ form input[type="date"] {
 form input[type="text"]:focus,
 form input[type="email"]:focus,
 form input[type="date"]:focus {
-    border-color: #4CAF50;
+    border-color: #213A58;
     outline: none;
 }
 
@@ -63,7 +63,7 @@ form input[type="date"]:focus {
 form button {
     width: 100%;
     padding: 12px;
-    background-color: #4CAF50;
+    background-color: #213A58;
     color: white;
     font-size: 18px;
     border: none;
@@ -74,7 +74,7 @@ form button {
 
 /* Hiệu ứng hover cho nút bấm */
 form button:hover {
-    background-color: #45a049;
+    background-color: #213A58;
 }
 
 /* Định dạng các trường hợp nhập liệu không hợp lệ */
