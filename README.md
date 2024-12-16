@@ -81,8 +81,14 @@
     ![Screenshot 2024-12-16 100657](https://github.com/user-attachments/assets/6c2233b0-bb1c-4793-8153-2caeb70527b4)
  
  3. Đăng kí
+
+    Đăng kí dưới quyền ứng viên
     
-    ![Screenshot 2024-12-16 101851](https://github.com/user-attachments/assets/92b0a609-379a-4702-8b69-11491adca7be)
+    ![Screenshot 2024-12-16 143905](https://github.com/user-attachments/assets/4de09744-9e2e-4e93-a467-fa49e46a196e)
+
+    Đăng kí dưới quyền công ty
+
+    ![Screenshot 2024-12-16 143935](https://github.com/user-attachments/assets/78dece2a-be11-4071-b490-ba9917e5a006)
 
 ---
 
