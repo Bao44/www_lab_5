@@ -24,6 +24,10 @@
 2. **Cấu trúc dự án**:
 
     ![Screenshot 2024-12-16 083220](https://github.com/user-attachments/assets/546d6596-f9a0-461a-b161-f0d8c2cac7a3)
+
+   **Sơ đồ Diagrams**
+
+   ![Screenshot 2024-12-16 213118](https://github.com/user-attachments/assets/e085cd79-7b67-40e6-8614-f10cd9e1e78d)
    
 4. **Cấu hình cơ sở dữ liệu**:
    - Mở file `application.properties`.
@@ -130,8 +134,6 @@
 
     5.2 Trang quản lí
 
-    `Vẫn còn 1 số chức năng chưa hoàn thành` 
-
     ![Screenshot 2024-12-16 145048](https://github.com/user-attachments/assets/c1acfa1e-3ada-417e-99e8-dc328f158ab4)
 
     5.3 Danh sách các ứng viên
@@ -145,3 +147,14 @@
     5.5 Mail được gửi về ứng viên
 
     ![Screenshot 2024-12-16 145957](https://github.com/user-attachments/assets/d1b39490-6bcd-46d2-832c-c79ffce2f492)
+
+    5.6 Đăng bài tuyển dụng
+
+    ![Screenshot 2024-12-17 030847](https://github.com/user-attachments/assets/25d4ba56-e2e8-452d-8446-4d0ffbeb9752)
+
+    Sau khi đăng bài thành công thì sẽ hiển thị lên cho các ứng viên nhìn thấy
+
+    ![Screenshot 2024-12-17 030538](https://github.com/user-attachments/assets/6c860cd9-3147-4b71-8f11-b7fe3a833a0a)
+
+    `Vẫn còn 1 số chức năng chưa hoàn thành` 
+    
