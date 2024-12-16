@@ -4,94 +4,28 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Job Management</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #f4f4f9;
-        }
-
-        form {
-            max-width: 800px;
-            margin: 20px auto;
-            padding: 20px;
-            background: #fff;
-            border-radius: 8px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-        }
-
-        h3 {
-            color: #333;
-            border-bottom: 2px solid #007BFF;
-            padding-bottom: 5px;
-        }
-
-        label {
-            display: block;
-            margin: 10px 0 5px;
-            font-weight: bold;
-        }
-
-        input, textarea, select, button {
-            width: 100%;
-            padding: 10px;
-            margin-bottom: 15px;
-            border: 1px solid #ddd;
-            border-radius: 4px;
-        }
-
-        button {
-            background-color: #007BFF;
-            color: white;
-            font-size: 16px;
-            cursor: pointer;
-        }
-
-        button:hover {
-            background-color: #0056b3;
-        }
-
-        #skillsContainer .skillForm {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        #skillsContainer .skillForm button {
-            width: auto;
-            background-color: #dc3545;
-        }
-
-        #skillsContainer .skillForm button:hover {
-            background-color: #a71d2a;
-        }
-
-        template {
-            display: none;
-        }
-    </style>
+    <link rel="stylesheet" href="/styles/job.css">
 </head>
 <body>
-<form action="/admin-fe/job-skill/addJobSkill" method="POST">
+<form id="jobForm" action="/admin-fe/job-skill/addJobSkill" method="POST">
     <!-- Job Information -->
-    <h3>Job Information</h3>
-    <label for="jobName">Job Name:</label>
+    <h3>Đăng bài tuyển dụng</h3>
+    <label for="jobName">Tên công việc:</label>
     <input type="text" id="jobName" name="jobName" required />
 
-    <label for="jobDesc">Job Description:</label>
+    <label for="jobDesc">Thông tin công việc:</label>
     <textarea id="jobDesc" name="jobDesc" rows="4" required></textarea>
 
     <!-- Company Selection -->
-    <h3>Company Information</h3>
-    <label for="compEmail">Email Company:</label>
+    <h3>Thông tin về công ty tuyển dụng</h3>
+    <label for="compEmail">Email công ty:</label>
     <input type="text" id="compEmail" name="compEmail" required />
 
     <!-- Skills Selection -->
-    <h3>Required Skills</h3>
+    <h3>Yêu cầu về kỹ năng</h3>
 
     <!-- Skill Level -->
-    <label for="skillLevel">Skill Level:</label>
+    <label for="skillLevel">Trình độ:</label>
     <select name="skillLevels" id="skillLevel" required>
         <option value="BEGINER">Beginner</option>
         <option value="INTERMEDIATE">Intermediate</option>
@@ -102,37 +36,36 @@
 
     <div id="skillsContainer">
         <div class="skillForm">
-            <label for="skillId1">Skill:</label>
+            <label for="skillId1">Kỹ năng:</label>
             <select name="skillIds[]" id="skillId1" required>
                 <option th:each="skill : ${skills}" th:value="${skill.id}" th:text="${skill.skillName}"></option>
             </select>
-
         </div>
     </div>
 
     <!-- Template for new skill dropdown -->
     <template id="skillTemplate">
         <div class="skillForm">
-            <label for="skillId1">Skill:</label>
+            <label for="skillId1">Kỹ năng:</label>
             <select name="skillIds[]" required>
                 <option th:each="skill : ${skills}" th:value="${skill.id}" th:text="${skill.skillName}"></option>
             </select>
 
-            <button type="button">Remove</button>
+            <button type="button">Xóa</button>
         </div>
     </template>
 
-    <button type="button" id="addSkillBtn">Add Another Skill</button>
+    <button type="button" id="addSkillBtn">Thêm kỹ năng</button>
 
     <br>
-    <button type="submit">Submit Job</button>
+    <button type="submit">Đăng bài</button>
 </form>
-
 
 <script>
     const skillsContainer = document.getElementById('skillsContainer');
     const addSkillBtn = document.getElementById('addSkillBtn');
     const skillTemplate = document.getElementById('skillTemplate');
+    const jobForm = document.getElementById('jobForm');
 
     addSkillBtn.addEventListener('click', function () {
         const newSkillForm = skillTemplate.content.cloneNode(true);
@@ -144,6 +77,17 @@
         });
 
         skillsContainer.appendChild(newSkillForm);
+    });
+
+    // Event listener for form submission
+    jobForm.addEventListener('submit', function(event) {
+        event.preventDefault(); // Prevent the form from submitting immediately
+
+        // Show a success message
+        alert('Bài tuyển dụng đã được đăng thành công!');
+
+        // After showing the alert, you can submit the form manually
+        jobForm.submit(); // This will submit the form after the alert
     });
 </script>
 </body>
