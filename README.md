@@ -14,6 +14,7 @@
 - **MariaDB**
 - **IDE**: IntelliJ IDEA
 - **Hệ điều hành**: Windows, MacOS
+- **Email**: Xác thực 2 yếu tố
 
 ### 2. Cách cài đặt dự án
 1. **Clone repository**:
@@ -34,9 +35,12 @@
    - Mở trình duyệt và truy cập [http://localhost:8080](http://localhost:8080).
    - Tài khoản demo:
      - **USER:**
-       -   Email: bao@gmail.com
+       -   Email: tqbao44@gmail.com
        - Password: 123
      - **ADMIN:**
-       - Email: thuan@gmail.com
-       - Password: 123456789
+       - Email: teo@gmail.com
+       - Password: 123456
 ---
+
+## Chức năng
+### 1. Ứng vi
