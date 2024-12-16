@@ -82,7 +82,7 @@
  
  3. Đăng kí
     
-    ![Screenshot 2024-12-16 100705](https://github.com/user-attachments/assets/22ea8591-bdd7-43d6-bcca-37b492a0b1a6)
+    ![Screenshot 2024-12-16 101851](https://github.com/user-attachments/assets/92b0a609-379a-4702-8b69-11491adca7be)
 
 ---
 
