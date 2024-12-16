@@ -72,5 +72,23 @@
 ---
 
 ## Giao diện
+ 1. Giao diện khi vừa mở lên
+    
+    ![Screenshot 2024-12-16 100131](https://github.com/user-attachments/assets/cd4c3160-28c5-4677-a1bb-bf9f7504a170)
+ 
+ 2. Đăng nhập
+    
+    ![Screenshot 2024-12-16 100657](https://github.com/user-attachments/assets/6c2233b0-bb1c-4793-8153-2caeb70527b4)
+ 
+ 3. Đăng kí
+    
+    ![Screenshot 2024-12-16 100705](https://github.com/user-attachments/assets/22ea8591-bdd7-43d6-bcca-37b492a0b1a6)
 
+---
+
+ 4. Đăng nhập với tư cách `ứng viên`
+ 
+---
+
+ 5. Đăng nhập với tư cách `công ty`
 
