@@ -2,63 +2,106 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sign Up</title>
-    <link rel="stylesheet" type="text/css" href="/styles/signup.css">
+    <link rel="stylesheet" href="styles/signup.css">
 </head>
 <body>
-<div>
-
+<div class="signup-container">
     <h1 class="header">Đăng kí</h1>
-    <div>
-        <p th:text="${status == null ? '' : status}"></p>
-    </div>
-    <form action="/auth-fe/signup" method="post" id="formSignUp">
-        <div class="fullname">
-            <label class="labelFullName">Full Name:</label>
-            <input name="inputFullName" required/>
-        </div>
-        <div>
-            <label class="labelEmail">Email:</label>
-            <input  name="inputEmail" type="email" required/>
-        </div>
-        <div>
-            <label class="labelPassword">Password:</label>
-            <input name="inputPassword" type="password" required/>
-        </div>
-        <div>
-            <label class="labelPhone">Phone:</label>
-            <input name="inputPhone" type="number" required/>
-        </div>
-        <div>
-            <label class="labelDob">Date of birth:</label>
-            <input name="inputDob" type="date" required/>
-        </div>
-        <div>
-            <label class="labelCountry">Country:</label>
-            <input name="inputCountry" type="number" required/>
-        </div>
-        <div>
-            <label class="labelCity">City:</label>
-            <input name="inputCity" required/>
-        </div>
-        <div>
-            <label class="labelStreet">Street:</label>
-            <input name="inputStreet" required/>
-        </div>
-        <div>
-            <label class="labelNumber">Number:</label>
-            <input name="inputNumber" required/>
-        </div>
-        <div>
-            <label class="labelZipcode">Zipcode:</label>
-            <input name="inputZipcode" required/>
-        </div>
-        <div class="login">
-            <a class="text-login" href="/login">Đăng nhập</a>
-        </div>
-        <button type="submit" id="signupBtn">Đăng kí</button>
 
+    <!-- Tabs chọn loại đăng ký -->
+    <div class="tabs">
+        <button id="userTab" class="active-tab">Đăng ký Người dùng</button>
+        <button id="companyTab">Đăng ký Công ty</button>
+    </div>
+
+    <!-- Form đăng ký Người dùng -->
+    <form action="/auth-fe/signup" method="post" id="userForm">
+        <div class="input-group">
+            <input type="text" name="inputFullName" id="inputFullName" placeholder="Họ và tên" required />
+        </div>
+        <div class="input-group">
+            <input type="email" name="inputEmail" id="inputEmail" placeholder="Email" required />
+        </div>
+        <div class="input-group">
+            <input type="password" name="inputPassword" id="inputPassword" placeholder="Mật khẩu" required />
+        </div>
+        <div class="input-group">
+            <input type="tel" name="inputPhone" id="inputPhone" placeholder="Số điện thoại" required />
+        </div>
+        <div class="input-group">
+            <input type="date" name="inputDob" id="inputDob" placeholder="Ngày sinh" required />
+        </div>
+        <!-- Thêm địa chỉ -->
+        <div class="input-group">
+            <input type="text" name="inputCountry" id="inputCountry" placeholder="Quốc gia" required />
+        </div>
+        <div class="input-group">
+            <input type="text" name="inputCity" id="inputCity" placeholder="Thành phố" required />
+        </div>
+        <div class="input-group">
+            <input type="text" name="inputStreet" id="inputStreet" placeholder="Đường" required />
+        </div>
+        <div class="input-group">
+            <input type="text" name="inputNumber" id="inputNumber" placeholder="Số nhà" required />
+        </div>
+        <div class="input-group">
+            <input type="text" name="inputZipcode" id="inputZipcode" placeholder="Mã bưu điện" required />
+        </div>
+        <button type="submit">Đăng ký</button>
+    </form>
+
+    <!-- Form đăng ký Công ty -->
+    <form action="/auth-fe/signup" method="post" id="companyForm" class="hidden">
+        <div class="input-group">
+            <input type="text" name="inputFullName" id="inputName" placeholder="Họ và tên" required />
+        </div>
+        <div class="input-group">
+            <input type="email" name="companyEmail" id="companyEmail" placeholder="Email công ty" required />
+        </div>
+        <div class="input-group">
+            <input type="text" name="companyName" id="companyName" placeholder="Tên công ty" required />
+        </div>
+        <div class="input-group">
+            <input type="password" name="inputPassword" id="inputPasswordCompany" placeholder="Mật khẩu" required />
+        </div>
+        <div class="input-group">
+            <input type="tel" name="inputPhone" id="inputPhoneCompany" placeholder="Số điện thoại" required />
+        </div>
+        <div class="input-group">
+            <input type="url" name="companyWebsite" id="companyWebsite" placeholder="URL trang web" required />
+        </div>
+        <div class="input-group">
+            <textarea name="companyDescription" id="companyDescription" placeholder="Mô tả công ty" rows="4" required></textarea>
+        </div>
+        <button type="submit">Đăng ký Công ty</button>
     </form>
 </div>
+
+<script>
+    document.addEventListener("DOMContentLoaded", () => {
+        const userForm = document.getElementById("userForm");
+        const companyForm = document.getElementById("companyForm");
+        const userTab = document.getElementById("userTab");
+        const companyTab = document.getElementById("companyTab");
+
+        // Xử lý chuyển đổi giữa hai tab
+        userTab.addEventListener("click", () => {
+            userTab.classList.add("active-tab");
+            companyTab.classList.remove("active-tab");
+            userForm.classList.remove("hidden");
+            companyForm.classList.add("hidden");
+        });
+
+        companyTab.addEventListener("click", () => {
+            companyTab.classList.add("active-tab");
+            userTab.classList.remove("active-tab");
+            companyForm.classList.remove("hidden");
+            userForm.classList.add("hidden");
+        });
+    });
+</script>
 </body>
 </html>
+

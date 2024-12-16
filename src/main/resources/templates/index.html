@@ -96,6 +96,30 @@
             </div>
         </div>
 
+        <div th:if="${account_login == null}">
+            <div class="job-skills-container">
+                <h2>Gợi ý cho bạn</h2>
+                <div class="job-cards-container">
+                    <div th:each="job : ${jobs}" class="job-card">
+                        <h3 class="job-title" th:text="${job.jobName}"></h3>
+                        <p class="job-info">
+                            <span class="label">Thông tin công việc:</span>
+                            <span th:text="${job.jobDesc}"></span>
+                        </p>
+                        <p class="job-company">
+                            <span class="label">Tên công ty:</span>
+                            <span th:text="${job.company.getCompName()}"></span>
+                        </p>
+                        <div class="job-skills">
+                            <span class="label">Kỹ năng:</span>
+                            <span class="skill-tag" th:each="jobSkill : ${jobSkills}"
+                                  th:if="${job.id == jobSkill.id.job.id}"
+                                  th:text="${jobSkill.id.skill.skillName}"></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
 
         <div th:switch="${role}">
             <!-- USER CASE -->
