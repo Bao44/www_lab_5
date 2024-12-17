@@ -15,28 +15,26 @@
 <body>
 <div class="container mt-5">
     <div class="text-center mb-5">
-        <h1 class="profile-title">Candidate Management</h1>
+        <h1 class="profile-title">Ứng viên</h1>
         <hr class="divider">
     </div>
 
     <div class="card profile-card mb-4">
         <div class="card-header profile-card-header">
-            Candidate List
+            Danh sách ứng viên
         </div>
         <div class="card-body">
             <table class="table profile-table">
                 <thead>
                 <tr>
-                    <th>ID</th>
-                    <th>Full Name</th>
+                    <th>Họ và tên</th>
                     <th>Email</th>
-                    <th>Phone</th>
+                    <th>Số điện thoại</th>
                     <th></th>
                 </tr>
                 </thead>
                 <tbody th:each="can : ${candidates}">
                 <tr>
-                    <td th:text="${can.id}"></td>
                     <td th:text="${can.fullName}"></td>
                     <td th:text="${can.email}"></td>
                     <td th:text="${can.phone}"></td>

@@ -32,6 +32,17 @@
             <div class="job-card">
                 <p><strong>Tên công việc:</strong> <span th:text="${job.jobName}"></span></p>
                 <p><strong>Mô tả:</strong> <span th:text="${job.jobDesc}"></span></p>
+
+                <!-- Kỹ năng cần có với thiết kế mới -->
+                <div>
+                    <p><strong>Kỹ năng cần có:</strong></p>
+                    <div class="skill-tags">
+                    <span class="skill-badge" th:each="jobSkill : ${jobSkills}"
+                          th:if="${job.id == jobSkill.id.job.id}"
+                          th:text="${jobSkill.id.skill.skillName}">
+                    </span>
+                    </div>
+                </div>
             </div>
         </div>
     </section>

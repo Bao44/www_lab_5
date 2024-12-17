@@ -10,9 +10,11 @@ import org.springframework.web.servlet.ModelAndView;
 import vn.edu.iuh.fit.lab_5.backend.dtos.CandidateDTO;
 import vn.edu.iuh.fit.lab_5.backend.models.Company;
 import vn.edu.iuh.fit.lab_5.backend.models.Job;
+import vn.edu.iuh.fit.lab_5.backend.models.JobSkill;
 import vn.edu.iuh.fit.lab_5.frontend.models.CandidateModel;
 import vn.edu.iuh.fit.lab_5.frontend.models.CompanyModel;
 import vn.edu.iuh.fit.lab_5.frontend.models.JobModel;
+import vn.edu.iuh.fit.lab_5.frontend.models.JobSkillModel;
 
 import java.util.List;
 
@@ -25,6 +27,8 @@ public class JobController {
     private CandidateModel cm;
     @Autowired
     private CompanyModel companyModel;
+    @Autowired
+    private JobSkillModel jobSkillModel;
 
     @GetMapping("/search-job/job")
     public ModelAndView getAllJobs(@RequestParam(value = "search", required = false) String searchJob, ModelAndView mv) {
@@ -43,11 +47,13 @@ public class JobController {
     @GetMapping("/{id}/candidates-match-job")
     public ModelAndView getCandidatesMatchJob(@PathVariable("id") Long jobId) {
         ModelAndView mv = new ModelAndView("admin/company/match-candidate");
-        Company target = companyModel.getCompanyById(jobId);
         Job job = jm.getJobById(jobId);
+        Company target = companyModel.getCompanyById(job.getCompany().getId());
+        List<JobSkill> jobSkills = jobSkillModel.getAllJobSkills();
         List<CandidateDTO> candidateDTOS = jm.getCandidatesMatchJob(jobId);
         mv.addObject("company", target);
         mv.addObject("job", job);
+        mv.addObject("jobSkills", jobSkills);
         mv.addObject("candidates", candidateDTOS);
         return mv;
     }

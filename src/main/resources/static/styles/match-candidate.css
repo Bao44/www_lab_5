@@ -68,6 +68,33 @@ h2, h3 {
     gap: 25px;
 }
 
+/* Kỹ năng Badge Styles */
+.skill-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.skill-badge {
+    display: inline-block;
+    background-color: #007bff;
+    color: #fff;
+    font-size: 0.9rem;
+    padding: 8px 12px;
+    border-radius: 20px;
+    font-weight: 500;
+    text-transform: capitalize;
+    transition: all 0.3s ease-in-out;
+}
+
+.skill-badge:hover {
+    background-color: #0056b3;
+    transform: scale(1.05);
+    cursor: pointer;
+}
+
+
 .candidate-card {
     background-color: #fff;
     border: 1px solid #ddd;

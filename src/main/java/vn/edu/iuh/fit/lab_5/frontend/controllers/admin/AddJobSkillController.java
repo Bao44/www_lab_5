@@ -100,7 +100,16 @@ public class AddJobSkillController {
                 jobSkillId.setSkill(skill);  // Thiết lập skill cho JobSkillId
 
                 jobSkill.setId(jobSkillId);  // Gán JobSkillId cho JobSkill
-                jobSkill.setSkillLevel(SkillLevel.valueOf(skillLevels));  // Thiết lập level cho Skill
+
+                // Ánh xạ từ chuỗi skillLevels sang SkillLevel
+                try {
+                    jobSkill.setSkillLevel(SkillLevel.fromString(skillLevels));  // Thiết lập level cho Skill
+                } catch (IllegalArgumentException e) {
+                    mv.setViewName("admin/job");
+                    mv.addObject("error", "Invalid skill level: " + skillLevels);
+                    mv.addObject("skills", sm.getAllSkills());
+                    return mv;
+                }
 
                 // Thêm JobSkill vào danh sách
                 jobSkills.add(jobSkill);
@@ -113,8 +122,7 @@ public class AddJobSkillController {
         }
 
         mv.setViewName("admin/job");
+        mv.addObject("success", "Job skill added successfully.");
         return mv;
     }
-
-
 }
