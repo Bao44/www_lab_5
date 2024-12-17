@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 import vn.edu.iuh.fit.lab_5.backend.enums.SkillType;
 import vn.edu.iuh.fit.lab_5.backend.models.Candidate;
+import vn.edu.iuh.fit.lab_5.backend.models.Company;
 import vn.edu.iuh.fit.lab_5.frontend.models.AdminHomeModel;
 import vn.edu.iuh.fit.lab_5.frontend.models.CandidateModel;
 import vn.edu.iuh.fit.lab_5.frontend.models.CompanyModel;
@@ -51,10 +52,21 @@ public class AdminHomeController {
         return mv;
     }
 
-    @GetMapping("/company")
-    public ModelAndView directToCompanyManagement(ModelAndView mv) {
+    @GetMapping("/company/{page}")
+    public ModelAndView directToCompanyManagement(ModelAndView mv, @PathVariable("page") String page) {
         mv.setViewName("admin/company");
-        mv.addObject("companies", cpm.getAllCompanies());
+
+        List<Company> company = cpm.getAllCompanies();
+        int pageSize = company.size() / 12;
+
+        List<String> pages = new ArrayList<>();
+        for (int i = 0; i <= pageSize; ++i) {
+            pages.add((i + 1) + "");
+        }
+
+        mv.addObject("companies", cpm.getCompaniesForPage(Integer.parseInt(page) == 0 ? 0 : Integer.parseInt(page) - 1));
+        mv.addObject("pages", pages);
+
         return mv;
     }
 }

@@ -24,24 +24,25 @@
         </div>
         <div class="card-body">
             <div class="row mb-3">
-                <div class="col-md-3 font-weight-bold">ID Candidate:</div>
-                <div class="col-md-9" th:text="${candidate.id}"></div>
-            </div>
-            <div class="row mb-3">
-                <div class="col-md-3 font-weight-bold">Date of Birth:</div>
-                <div class="col-md-9" th:text="${candidate.dob}"></div>
-            </div>
-            <div class="row mb-3">
-                <div class="col-md-3 font-weight-bold">Full Name:</div>
+                <div class="col-md-3 font-weight-bold">Họ và tên:</div>
                 <div class="col-md-9" th:text="${candidate.fullName}"></div>
             </div>
             <div class="row mb-3">
-                <div class="col-md-3 font-weight-bold">Phone:</div>
+                <div class="col-md-3 font-weight-bold">Email:</div>
+                <div class="col-md-9" th:text="${candidate.email}"></div>
+            </div>
+            <div class="row mb-3">
+                <div class="col-md-3 font-weight-bold">Năm sinh:</div>
+                <div class="col-md-9" th:text="${candidate.dob}"></div>
+            </div>
+
+            <div class="row mb-3">
+                <div class="col-md-3 font-weight-bold">Số diện thoại:</div>
                 <div class="col-md-9" th:text="${candidate.phone}"></div>
             </div>
             <div class="row mb-3">
-                <div class="col-md-3 font-weight-bold">Address:</div>
-                <div class="col-md-9" th:text="${candidate.address.street} + ' - ' + ${candidate.address.country} + ' - ' + ${candidate.address.zipcode}"></div>
+                <div class="col-md-3 font-weight-bold">Địa chỉ:</div>
+                <div class="col-md-9" th:text="${candidate.address.zipcode} + ' - ' + ${candidate.address.street} + ' - ' + ${candidate.address.country}"></div>
             </div>
 
             <!-- Thêm phần Gửi mail đến ứng viên -->
@@ -52,7 +53,7 @@
                     <form th:action="@{'/candidate/detail/' + ${candidate.id} + '/sendEmail'}" method="post">
                         <input type="hidden" name="candidateId" th:value="${candidate.id}" />
                         <button type="submit" class="btn btn-info btn-sm">
-                            <i class="fas fa-envelope"></i> Gửi Mail đến ứng viên
+                            <i class="fas fa-envelope"></i> Gửi Mail
                         </button>
                     </form>
                 </div>
@@ -64,16 +65,16 @@
     <!-- Candidate Skills Section -->
     <div class="card profile-card mb-4">
         <div class="card-header profile-card-header">
-            Candidate Skills
+            Kỹ năng của ứng viên
         </div>
         <div class="card-body">
             <table class="table profile-table">
                 <thead>
                 <tr>
-                    <th>Skill Name</th>
-                    <th>Skill Level</th>
-                    <th>Skill Type</th>
-                    <th>Information</th>
+                    <th>Tên kỹ năng</th>
+                    <th>Trình độ</th>
+                    <th>Loại kỹ năng</th>
+                    <th>Thông tin</th>
                 </tr>
                 </thead>
                 <tbody th:each="skill : ${candidate_skills}">
@@ -90,16 +91,16 @@
 
     <div class="card profile-card mb-4">
         <div class="card-header profile-card-header">
-            Candidate Experience
+            Kinh nghiệm làm việc
         </div>
         <div class="card-body">
             <table class="table profile-table">
                 <thead>
                 <tr>
-                    <th>Company Name</th>
-                    <th>Role</th>
-                    <th>From Date</th>
-                    <th>To Date</th>
+                    <th>Tên công ty</th>
+                    <th>Chức vụ</th>
+                    <th>Từ ngày</th>
+                    <th>Đến ngày</th>
                 </tr>
                 </thead>
                 <tbody th:each="experience : ${candidate_experiences}">

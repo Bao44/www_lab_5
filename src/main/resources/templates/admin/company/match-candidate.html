@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Candidates Match Job</title>
+    <link rel="stylesheet" href="/styles/match-candidate.css">
+</head>
+<body>
+<div class="container">
+    <!-- Company Information -->
+    <section class="company-info">
+        <div class="section-header">
+            <h2>Công ty: <span th:text="${company.compName}"></span></h2>
+        </div>
+        <div class="section-body">
+            <p th:text="${company.about}"></p>
+            <div class="contact-info">
+                <p>Email: <span th:text="${company.email}"></span></p>
+                <p>Phone: <span th:text="${company.phone}"></span></p>
+                <p>Web: <a href="" th:text="${company.webUrl}"></a></p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Job Information -->
+    <section class="job-info">
+        <div class="section-header">
+            <h3>Thông tin công việc</h3>
+        </div>
+        <div class="section-body">
+            <div class="job-card">
+                <p><strong>Tên công việc:</strong> <span th:text="${job.jobName}"></span></p>
+                <p><strong>Mô tả:</strong> <span th:text="${job.jobDesc}"></span></p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Candidates Matching the Job -->
+    <section class="job-candidates">
+        <div class="section-header">
+            <h3>Ứng viên phù hợp</h3>
+        </div>
+        <div class="candidate-cards-container">
+            <div th:each="candidate : ${candidates}" class="candidate-card">
+                <div class="candidate-header">
+                    <h4 th:text="${candidate.fullName}"></h4>
+                    <p class="match-percentage" th:text="${candidate.matchingPercentage + ' %'}"></p>
+                </div>
+                <div class="candidate-body">
+                    <p><strong>Email:</strong> <span th:text="${candidate.email}"></span></p>
+                    <p><strong>Số kỹ năng phù hợp:</strong> <span th:text="${candidate.matchingSkills}"></span></p>
+                </div>
+                <div class="candidate-footer">
+                    <a th:href="@{'/candidate/detail/' + ${candidate.id}}" class="btn btn-link">Xem thông tin ứng viên</a>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+</body>
+</html>

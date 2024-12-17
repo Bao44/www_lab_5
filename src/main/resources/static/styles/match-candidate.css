@@ -1,0 +1,132 @@
+/* General Styles */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f4f6f9;
+    color: #333;
+    line-height: 1.6;
+    padding-top: 20px;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* Section Styles */
+section {
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    margin-bottom: 30px;
+    padding: 20px;
+}
+
+/* Section Header */
+.section-header {
+    margin-bottom: 15px;
+}
+
+h2, h3 {
+    font-size: 1.6rem;
+    color: #213A58; /* Màu chủ đạo */
+    font-weight: bold;
+}
+
+/* Company Info */
+.company-info {
+    background-color: #ecf0f1;
+    border-left: 5px solid #213A58;
+}
+
+.company-info .contact-info {
+    margin-top: 20px;
+}
+
+/* Job Info */
+.job-info .job-card {
+    padding: 15px;
+    border: 1px solid #bdc3c7;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+}
+
+.job-info p {
+    margin-bottom: 10px;
+}
+
+/* Candidates Cards */
+.job-candidates .candidate-cards-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 25px;
+}
+
+.candidate-card {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.candidate-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+}
+
+.candidate-header {
+    background-color: #4180c9;
+    color: white;
+    padding: 20px;
+    text-align: center;
+}
+
+.candidate-header h4 {
+    font-size: 1.3rem;
+    margin-bottom: 5px;
+}
+
+.match-percentage {
+    font-size: 1.1rem;
+    font-weight: bold;
+    color: #fff;
+    /*background-color: #e74c3c;*/
+    background-color: #ff3814;
+    padding: 5px 10px;
+    border-radius: 5px;
+}
+
+/* Candidate Body */
+.candidate-body {
+    padding: 20px;
+    font-size: 1rem;
+}
+
+.candidate-body p {
+    margin-bottom: 10px;
+}
+
+.candidate-footer {
+    padding: 20px;
+    text-align: center;
+    background-color: #f4f1f1;
+}
+
+.candidate-footer .btn-link {
+    color: #213A58;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 1rem;
+}
+
+.candidate-footer .btn-link:hover {
+    text-decoration: none;
+}

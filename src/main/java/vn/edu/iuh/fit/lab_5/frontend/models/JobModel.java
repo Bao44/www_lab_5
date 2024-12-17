@@ -4,6 +4,8 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;
+import vn.edu.iuh.fit.lab_5.backend.dtos.CandidateDTO;
+import vn.edu.iuh.fit.lab_5.backend.models.Candidate;
 import vn.edu.iuh.fit.lab_5.backend.models.Job;
 import vn.edu.iuh.fit.lab_5.backend.models.JobSkill;
 import vn.edu.iuh.fit.lab_5.backend.models.Response;
@@ -24,6 +26,11 @@ public class JobModel {
         return mapper.convertValue(response.getData(), Job.class);
     }
 
+    public Job getJobById(Long id) {
+        Response response = rt.getForObject(URI.create(uri + "/" + id), Response.class);
+        return mapper.convertValue(response.getData(), Job.class);
+    }
+
     public List<Job> getAllJobs() {
         Response response = rt.getForObject(URI.create(uri), Response.class);
         return mapper.convertValue(response.getData(), new TypeReference<List<Job>>() {
@@ -36,12 +43,22 @@ public class JobModel {
         });
     }
 
-    // Phương thức tìm kiếm công việc theo tên hoặc tên công ty
     public List<Job> searchJobsByNameOrCompany(String searchTerm) {
-        String searchUrl = uri + "/search?search=" + searchTerm; // Giả sử API hỗ trợ tìm kiếm
+        String searchUrl = uri + "/search?search=" + searchTerm;
         Response response = rt.getForObject(searchUrl, Response.class);
-//        return (List<Job>) response.getData();
         return mapper.convertValue(response.getData(), new TypeReference<List<Job>>() {
+        });
+    }
+
+    public List<Job> getJobsByCompanyId(Long companyId) {
+        Response response = rt.getForObject(URI.create(uri + "/company/" + companyId), Response.class);
+        return mapper.convertValue(response.getData(), new TypeReference<List<Job>>() {
+        });
+    }
+
+    public List<CandidateDTO> getCandidatesMatchJob(Long jobId) {
+        Response response = rt.getForObject(URI.create(uri + "/" + jobId + "/candidates-match-job"), Response.class);
+        return mapper.convertValue(response.getData(), new TypeReference<List<CandidateDTO>>() {
         });
     }
 }

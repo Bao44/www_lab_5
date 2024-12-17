@@ -15,7 +15,7 @@
                 <img src="/styles/images/logo.jpg" alt="Logo" class="logo">
             </a>
             <nav class="nav-bar">
-                <a href="/user-fe/search-job/job">Tìm công việc</a>
+                <a href="/jobs/search-job/job">Tìm công việc</a>
                 <span th:switch="${role}">
                     <a th:case="ADMIN" href="/admin">Quản lí</a>
                 </span>
@@ -177,6 +177,9 @@
                                 <span class="skill-tag" th:each="candidateSkill : ${candidateSkills}"
                                       th:if="${candidateSkill.id.candidate.id == ca.id}"
                                       th:text="${candidateSkill.id.skill.skillName}"></span>
+                            </div>
+                            <div class="seeMoreCandidateDetail">
+                                <a th:href="@{'/candidate/detail/' + ${ca.id}}">Xem thêm</a>
                             </div>
                         </div>
                     </div>

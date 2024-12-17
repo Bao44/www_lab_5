@@ -1,8 +1,10 @@
 package vn.edu.iuh.fit.lab_5.backend.services;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import vn.edu.iuh.fit.lab_5.backend.exceptions.EntityIdNotFoundException;
+import vn.edu.iuh.fit.lab_5.backend.models.Candidate;
 import vn.edu.iuh.fit.lab_5.backend.models.Company;
 import vn.edu.iuh.fit.lab_5.backend.repositories.CompanyRepository;
 
@@ -45,5 +47,9 @@ public class CompanyServices {
 
     public Company getCompanyByEmail(String email) {
         return cr.findByEmail(email);
+    }
+
+    public Iterator<Company> getAll(Pageable pageable) {
+        return cr.findAll(pageable).iterator();
     }
 }

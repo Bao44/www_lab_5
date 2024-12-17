@@ -1,70 +1,91 @@
-/* General Styles */
+/* General Page Styles */
 body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background-color: #f0f8ff;
-    color: #333;
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+    background-color: #f0f8ff;
+    color: #213A58;
 }
 
-/* Page Title */
 .page-title {
-    color: #213A58; /* Dark Blue */
-    font-size: 2.8rem;
+    font-size: 2.5rem;
     font-weight: bold;
-    text-align: center;
-    margin-bottom: 30px;
+    color: #213A58; /* Màu chủ đạo thay đổi */
     text-transform: uppercase;
+    margin-bottom: 10px;
 }
 
-/* Table Container */
+/* Table Styles */
 .table-container {
     margin-top: 20px;
-    padding: 30px;
-    background-color: #ffffff;
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
-    border-radius: 12px;
-    overflow-x: auto;
 }
 
-/* Table Styling */
 .table {
-    width: 100%;
-    border-collapse: collapse;
+    width: 100%; /* Đảm bảo bảng chiếm toàn bộ chiều rộng */
+    border-radius: 10px;
+    background-color: #fff;
+    font-size: 1.1rem; /* Tăng kích thước font chữ cho bảng */
+    border: 1px solid #ddd; /* Đảm bảo bảng có viền rõ ràng */
 }
 
-/* Table Header Styling */
 .table-header {
-    background-color: #213A58; /* Dark Blue */
-    color: #ffffff;
-    font-size: 1.1rem;
-    font-weight: bold;
-    text-align: center;
+    background-color: #213A58; /* Màu chủ đạo thay đổi */
+    color: white;
     text-transform: uppercase;
+    font-weight: bold;
 }
 
-.table-header th {
-    padding: 15px;
-}
-
-/* Table Body Styling */
-.table-striped tbody tr:nth-child(odd) {
-    background-color: #f8f8f8;
-}
-
-.table tbody td {
+.table th, .table td {
     text-align: center;
-    padding: 15px;
-    font-size: 1rem;
-    color: #333;
-    border-bottom: 1px solid #ddd;
+    padding: 10px;
 }
 
-.table tbody tr:hover {
+.table-hover tbody tr:hover {
     background-color: #f1f1f1;
 }
 
-/* Table Borders */
-.table-bordered td, .table-bordered th {
-    border: 1px solid #ddd;
+/* Button Styles */
+.btn-info {
+    background-color: #213A58; /* Màu chủ đạo thay đổi */
+    border: none;
+    color: white;
+    font-weight: bold;
+    border-radius: 25px;
+    transition: background-color 0.3s ease;
+}
+
+.btn-info:hover {
+    background-color: #1a2e47; /* Tối hơn một chút khi hover */
+    color: white;
+}
+
+/* Pagination Styles */
+.pagination-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 30px;
+}
+
+.pagination .page-item {
+    margin: 0 5px;
+}
+
+.pagination .page-link {
+    background-color: #213A58; /* Màu chủ đạo thay đổi */
+    color: white;
+    padding: 8px 15px;
+    border-radius: 5px;
+    font-size: 1rem;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+    text-decoration: none;
+}
+
+.pagination .page-link:hover {
+    background-color: #1a2e47; /* Tối hơn một chút khi hover */
+}
+
+.pagination .page-item.active .page-link {
+    background-color: #0056b3; /* Màu của trang hiện tại */
 }

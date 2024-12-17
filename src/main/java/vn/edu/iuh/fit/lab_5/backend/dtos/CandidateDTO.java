@@ -19,4 +19,14 @@ public class CandidateDTO implements Serializable {
     String fullName;
     String phone;
     AddressDTO address;
+    private Long matchingSkills;
+    private Double matchingPercentage;
+
+    public CandidateDTO(Long id, String email, String fullName, Long matchingSkills, Double matchingPercentage) {
+        this.id = id;
+        this.email = email;
+        this.fullName = fullName;
+        this.matchingSkills = matchingSkills;
+        this.matchingPercentage = matchingPercentage;
+    }
 }

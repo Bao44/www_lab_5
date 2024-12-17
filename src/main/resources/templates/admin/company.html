@@ -13,19 +13,20 @@
 <body>
 <div class="container-xl mt-5">
     <div class="text-center mb-4">
-        <h1 class="page-title">Company Management Page</h1>
+        <h1 class="page-title">Danh sách các công ty</h1>
     </div>
 
     <div class="table-container">
         <table class="table table-bordered table-hover table-striped">
             <thead class="table-header">
             <tr>
-                <th>Company Id</th>
-                <th>Company Email</th>
+                <th>Id</th>
+                <th>Email</th>
                 <th>Company Name</th>
-                <th>Company Phone</th>
-                <th>Company Web URL</th>
-                <th>Company Address</th>
+                <th>Phone</th>
+                <th>Web URL</th>
+                <th>Address</th>
+                <th></th>
             </tr>
             </thead>
             <tbody>
@@ -34,12 +35,26 @@
                 <td th:text="${company.email}"></td>
                 <td th:text="${company.compName}"></td>
                 <td th:text="${company.phone}"></td>
-                <td th:text="${company.webUrl}"></td>
+                <td><a href="" th:text="${company.webUrl}"></a></td>
                 <td th:text="${company.address.street} + ' - ' + ${company.address.country}"></td>
+                <td>
+                    <a class="btn btn-info btn-sm" th:href="@{'/company/detail/' + ${company.id}}">
+                        View Detail
+                    </a>
+                </td>
             </tr>
             </tbody>
         </table>
     </div>
+
+    <div class="pagination-container mt-5">
+        <div class="pagination">
+            <div th:each="page : ${pages}" class="page-item">
+                <a th:href="@{'/admin-fe/company/' + ${page}}" th:text="${page}" class="page-link"></a>
+            </div>
+        </div>
+    </div>
 </div>
+
 </body>
 </html>

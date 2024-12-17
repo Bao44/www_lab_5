@@ -1,0 +1,150 @@
+/* General Page Styles */
+body {
+    background-color: #f4f6f9;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #333;
+}
+
+.profile-title {
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: #213A58; /* Màu chủ đạo thay đổi */
+    text-transform: uppercase;
+    margin-bottom: 10px;
+}
+
+.divider {
+    width: 120px;
+    border-top: 3px solid #213A58; /* Màu chủ đạo thay đổi */
+    margin: 0 auto 20px;
+    opacity: 1;
+}
+
+/* Company Information Card */
+.profile-card {
+    border: none;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    background-color: #fff;
+}
+
+.profile-card-header {
+    background-color: #213A58; /* Màu chủ đạo thay đổi */
+    color: white;
+    font-weight: bold;
+    text-transform: uppercase;
+    font-size: 1.2rem;
+    padding: 10px 20px;
+    border-radius: 10px 10px 0 0;
+}
+
+.profile-card-body {
+    padding: 20px;
+}
+
+.profile-card-body .row {
+    padding: 10px 0;
+    border-bottom: 1px solid #e6e6e6;
+}
+
+.profile-card-body .row:last-child {
+    border-bottom: none;
+}
+
+.profile-card-body .col-md-3 {
+    font-weight: bold;
+    color: #555;
+}
+
+.profile-card-body a {
+    color: #213A58; /* Màu chủ đạo thay đổi */
+    text-decoration: none;
+}
+
+.profile-card-body a:hover {
+    text-decoration: underline;
+}
+
+/* Job Information Cards */
+.job-cards-container {
+    margin-top: 20px;
+}
+
+.job-card {
+    background: #ffffff;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    padding: 20px;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.job-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.featured-job {
+    border: 2px solid #ffc107;
+    background-color: #fffbeb;
+}
+
+.job-title {
+    color: #213A58; /* Màu chủ đạo thay đổi */
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-bottom: 15px;
+}
+
+.job-info {
+    font-size: 1rem;
+    line-height: 1.6;
+    color: #555;
+}
+
+.job-skills {
+    margin-top: 10px;
+}
+
+.skill-tag {
+    display: inline-block;
+    background-color: #213A58; /* Màu chủ đạo thay đổi */
+    color: #ffffff;
+    padding: 5px 10px;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    margin: 5px 5px 0 0;
+}
+
+.btn-info {
+    background-color: #213A58; /* Màu chủ đạo thay đổi */
+    border: none;
+    font-weight: bold;
+}
+
+.btn-info:hover {
+    background-color: #0056b3;
+}
+
+.button {
+    padding: 12px 20px;  /* Giữ padding giống với input để đảm bảo căn chỉnh đều */
+    background: #213A58; /* Màu chủ đạo thay đổi */
+    border: none;
+    color: #fff;
+    border-radius: 25px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background 0.3s ease, box-shadow 0.3s ease;
+    display: inline-block;  /* Đảm bảo nút không bị đẩy */
+    margin-top: 10px;  /* Thêm margin-top để tách nó ra khỏi phần trên */
+}
+
+.button:hover {
+    background-color: #0056b3;
+    box-shadow: 0 4px 15px rgba(0, 91, 179, 0.2);
+}
+
+a {
+    text-decoration: none;
+}

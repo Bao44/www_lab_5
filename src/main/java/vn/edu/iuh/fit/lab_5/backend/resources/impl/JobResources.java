@@ -7,6 +7,9 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import vn.edu.iuh.fit.lab_5.backend.dtos.CandidateDTO;
+import vn.edu.iuh.fit.lab_5.backend.exceptions.EntityIdNotFoundException;
+import vn.edu.iuh.fit.lab_5.backend.models.Candidate;
 import vn.edu.iuh.fit.lab_5.backend.models.Job;
 import vn.edu.iuh.fit.lab_5.backend.models.Response;
 import vn.edu.iuh.fit.lab_5.backend.models.Skill;
@@ -14,11 +17,12 @@ import vn.edu.iuh.fit.lab_5.backend.resources.IManagement;
 import vn.edu.iuh.fit.lab_5.backend.services.JobServices;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("api/job")
 @Slf4j
-public class JobResources implements IManagement<Job,Long> {
+public class JobResources implements IManagement<Job, Long> {
 
     @Autowired
     private JobServices js;
@@ -66,7 +70,30 @@ public class JobResources implements IManagement<Job,Long> {
     @GetMapping("/{id}")
     @Override
     public ResponseEntity<Response> getById(@PathVariable("id") Long aLong) {
-        return null;
+        log.info("Calling get Job by id = " + aLong);
+        try {
+            Optional<Job> out = js.getById(aLong);
+            return ResponseEntity.ok(new Response(
+                    HttpStatus.OK.value(),
+                    "Get Job successfully",
+                    out
+            ));
+        } catch (EntityIdNotFoundException e) {
+            log.warn("Get Job failed for the Job id not found!");
+            return ResponseEntity.ok(new Response(
+                    HttpStatus.NO_CONTENT.value(),
+                    "The Job id = " + aLong + " was not found!",
+                    null
+            ));
+        } catch (Exception e) {
+            log.error("Get Job failed");
+            log.error("Error: ", e);
+            return ResponseEntity.ok(new Response(
+                    HttpStatus.OK.value(),
+                    "Get Job failed!",
+                    null
+            ));
+        }
     }
 
     @GetMapping
@@ -110,4 +137,37 @@ public class JobResources implements IManagement<Job,Long> {
         ));
     }
 
+    @GetMapping("/company/{companyId}")
+    public ResponseEntity<Response> getJobsByCompanyId(@PathVariable Long companyId) {
+        log.info("Calling get Job by companyId = " + companyId);
+        List<Job> jobs;
+        if (companyId != null) {
+            jobs = js.getJobsByCompanyId(companyId);
+        } else {
+            jobs = null;
+        }
+        System.out.println("Jobs after by companyId: " + jobs.size());
+        return ResponseEntity.ok(new Response(
+                HttpStatus.OK.value(),
+                "Get jobs  by companyId successfully",
+                jobs
+        ));
+    }
+
+    @GetMapping("/{jobId}/candidates-match-job")
+    public ResponseEntity<Response> getCandidatesMatchJob(@PathVariable Long jobId) {
+        log.info("Calling get candidates match job by jobId = " + jobId);
+        List<CandidateDTO> candidatesDTO;
+        if (jobId != null) {
+            candidatesDTO = js.getCandidatesForJob(jobId);
+        } else {
+            candidatesDTO = null;
+        }
+        System.out.println("Candidates after match job: " + candidatesDTO.size());
+        return ResponseEntity.ok(new Response(
+                HttpStatus.OK.value(),
+                "Get candidates match job successfully",
+                candidatesDTO
+        ));
+    }
 }

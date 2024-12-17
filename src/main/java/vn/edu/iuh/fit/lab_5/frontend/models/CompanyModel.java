@@ -21,5 +21,14 @@ public class CompanyModel {
         return mapper.convertValue(response.getData(), new TypeReference<List<Company>>() {});
     }
 
+    public List<Company> getCompaniesForPage(int page) {
+        Response response = rt.getForObject(URI.create(url + "/page/" + page), Response.class);
+        return mapper.convertValue(response.getData(), new TypeReference<>() {
+        });
+    }
 
+    public Company getCompanyById(Long id) {
+        Response response = rt.getForObject(URI.create(url + "/" + id), Response.class);
+        return mapper.convertValue(response.getData(), Company.class);
+    }
 }

@@ -391,3 +391,16 @@ footer a:hover {
     background-color: #0a3062;
     color: #fff;
 }
+
+.seeMoreCandidateDetail {
+    margin-top: 10px;
+}
+
+.seeMoreCandidateDetail a{
+    color: gray;
+    text-decoration: none;
+}
+
+.seeMoreCandidateDetail a:hover{
+    color: black;
+}
