@@ -122,7 +122,7 @@
     
     ![Screenshot 2024-12-16 144902](https://github.com/user-attachments/assets/bd92d87c-4f67-4b1b-85c8-5bcdbd570fa8)
 
-    `Vẫn còn 1 số chức năng sẽ bổ sung thêm`
+    `Vẫn sẽ cập nhật thêm một vài chức năng mới`
 
 ---
 
@@ -168,5 +168,5 @@
 
     ![Screenshot 2024-12-17 030538](https://github.com/user-attachments/assets/6c860cd9-3147-4b71-8f11-b7fe3a833a0a)
 
-    `Vẫn còn 1 số chức năng chưa hoàn thành` 
+    `Vẫn sẽ cập nhật thêm 1 vài chức năng mới` 
     
