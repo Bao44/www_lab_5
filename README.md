@@ -134,21 +134,29 @@
 
     5.2 Trang quản lí
 
-    ![Screenshot 2024-12-16 145048](https://github.com/user-attachments/assets/c1acfa1e-3ada-417e-99e8-dc328f158ab4)
+    ![Screenshot 2024-12-17 162303](https://github.com/user-attachments/assets/af8ef75b-a79d-40f9-8e42-dd044b893128)
 
-    5.3 Danh sách các ứng viên
+    5.3 Danh sách các công ty đối tác
+
+    ![Screenshot 2024-12-17 162153](https://github.com/user-attachments/assets/35e5fc83-6ab3-45d3-893c-7781c6c71720)
+
+    5.4 Khi `click` vào `ViewDetail` sẽ hiển thị thông tin và các bài tuyển dụng của công ty đó  
+    
+    ![Screenshot 2024-12-17 162207](https://github.com/user-attachments/assets/f5b91e2b-f3a7-4dc7-afe0-158cc19b2143)
+
+    5.5 Danh sách các ứng viên
 
     ![Screenshot 2024-12-16 145126](https://github.com/user-attachments/assets/79416484-5321-4ab5-b20b-6d580857fd55)
 
-    5.4 Thông tin của 1 ứng viên thi click vào xem, nếu cảm thấy ứng viên có những kỹ năng và kinh nghiệm phù hợp thì sẽ gửi mail đến ứng viên đó
+    5.6 Thông tin của 1 ứng viên thi click vào xem, nếu cảm thấy ứng viên có những kỹ năng và kinh nghiệm phù hợp thì sẽ gửi mail đến ứng viên đó
 
     ![Screenshot 2024-12-16 145152](https://github.com/user-attachments/assets/2a13addc-f008-47f7-a960-3a2edf4bd0af)
 
-    5.5 Mail được gửi về ứng viên
+    5.7 Mail được gửi về ứng viên
 
     ![Screenshot 2024-12-16 145957](https://github.com/user-attachments/assets/d1b39490-6bcd-46d2-832c-c79ffce2f492)
 
-    5.6 Đăng bài tuyển dụng
+    5.8 Đăng bài tuyển dụng
 
     ![Screenshot 2024-12-17 030847](https://github.com/user-attachments/assets/25d4ba56-e2e8-452d-8446-4d0ffbeb9752)
 
