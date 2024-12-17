@@ -130,7 +130,7 @@
 
     5.1 Giao diện của công ty, hiển thị các ứng viên
     
-    ![Screenshot 2024-12-16 144959](https://github.com/user-attachments/assets/66490d57-49a9-4cbc-b7dd-5b390119173c)
+    ![Screenshot 2024-12-17 123651](https://github.com/user-attachments/assets/8679398e-56ef-4684-9217-0a0d6bf5abf9)
 
     5.2 Trang quản lí
 
