@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jobs Matching Candidate</title>
+    <link rel="stylesheet" href="/styles/match-jobs.css">
+</head>
+<body>
+<div class="container">
+    <h1 class="text-center text-primary">Các công việc phù hợp với: <span th:text="${candidate.fullName}"></span></h1>
+
+    <!-- Candidate Information -->
+    <div class="candidate-info">
+        <h3>Thông tin</h3>
+        <p><strong>Tên:</strong> <span th:text="${candidate.fullName}"></span></p>
+        <p><strong>Email:</strong> <span th:text="${candidate.email}"></span></p>
+        <p><strong>Kỹ năng bạn có:</strong></p>
+        <div class="skill-tags">
+            <span th:each="candidateSkill : ${candidateSkills}" class="badge skill-badge"
+                  th:text="${candidateSkill.skill.skillName}"></span>
+        </div>
+    </div>
+
+    <!-- Matching Jobs Section -->
+    <h3>Các công việc phù hợp nhất</h3>
+    <div class="job-list">
+        <div th:each="job : ${jobs}" class="job-card">
+            <div class="job-card-header">
+                <h5 th:text="${job.jobName}"></h5>
+                <span class="badge match-percentage" th:text="${job.matchingPercentage + ' %'}"></span>
+            </div>
+
+            <div class="job-card-body">
+                <p><strong>Mô tả:</strong></p>
+                <p class="text-muted" th:text="${job.jobDesc}"></p>
+                <p><strong>Kỹ năng đang tuyển:</strong></p>
+                <div class="skill-tags">
+                    <span th:each="jobSkill : ${jobSkills}" th:if="${job.jobId == jobSkill.id.job.id}"
+                          class="badge skill-badge"
+                          th:text="${jobSkill.id.skill.skillName}"></span>
+                </div>
+            </div>
+
+            <div class="job-card-footer">
+                <a th:href="@{'/candidate/detail/' + ${candidate.id}}" class="btn">Xem chi tiết</a>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

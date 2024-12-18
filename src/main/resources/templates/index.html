@@ -18,6 +18,7 @@
                 <a href="/jobs/search-job/job">Tìm công việc</a>
                 <span th:switch="${role}">
                     <a th:case="ADMIN" href="/admin">Quản lí</a>
+                    <a th:case="USER" th:href="@{'/candidate/detail/' + ${candidate.id} + '/jobs-match-candidate'}">Công việc phù hợp</a>
                 </span>
                 <span th:if="${account_login != null}">
                     <a th:href="@{'/candidate/detail/profile/' + ${candidate.id}}"
@@ -98,7 +99,7 @@
 
         <div th:if="${account_login == null}">
             <div class="job-skills-container">
-                <h2>Gợi ý cho bạn</h2>
+                <h2>Công việc đang tuyển dụng</h2>
                 <div class="job-cards-container">
                     <div th:each="job : ${jobs}" class="job-card">
                         <h3 class="job-title" th:text="${job.jobName}"></h3>

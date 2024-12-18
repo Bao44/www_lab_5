@@ -7,17 +7,13 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 import vn.edu.iuh.fit.lab_5.backend.dtos.CandidateDTO;
+import vn.edu.iuh.fit.lab_5.backend.dtos.JobDTO;
 import vn.edu.iuh.fit.lab_5.backend.enums.SkillLevel;
 import vn.edu.iuh.fit.lab_5.backend.enums.SkillType;
 import vn.edu.iuh.fit.lab_5.backend.exceptions.EntityIdNotFoundException;
 import vn.edu.iuh.fit.lab_5.backend.ids.CandidateSkillId;
-import vn.edu.iuh.fit.lab_5.backend.models.Address;
-import vn.edu.iuh.fit.lab_5.backend.models.Candidate;
-import vn.edu.iuh.fit.lab_5.backend.models.CandidateSkill;
-import vn.edu.iuh.fit.lab_5.backend.models.Skill;
-import vn.edu.iuh.fit.lab_5.frontend.models.AuthenticateModel;
-import vn.edu.iuh.fit.lab_5.frontend.models.CandidateModel;
-import vn.edu.iuh.fit.lab_5.frontend.models.SkillModel;
+import vn.edu.iuh.fit.lab_5.backend.models.*;
+import vn.edu.iuh.fit.lab_5.frontend.models.*;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -32,6 +28,10 @@ public class CandidateController {
     private AuthenticateModel authenticateModel;
     @Autowired
     private SkillModel skillModel;
+    @Autowired
+    private CompanyModel companyModel;
+    @Autowired
+    private JobSkillModel jobSkillModel;
     @Autowired
     private JavaMailSender mailSender;
 
@@ -165,6 +165,21 @@ public class CandidateController {
             mv.addObject("errorMessage", "Không thể xóa kỹ năng: " + e.getMessage());
         }
 
+        return mv;
+    }
+
+
+    @GetMapping("/{id}/jobs-match-candidate")
+    public ModelAndView getCandidatesMatchJob(@PathVariable("id") Long canId) {
+        ModelAndView mv = new ModelAndView("user/match-jobs");
+        Candidate candidate = cm.getCandidateDetail(canId);
+        List<JobDTO> jobsDTOS = cm.getJobsMatchCandidate(canId);
+        List<JobSkill> jobSkills = jobSkillModel.getAllJobSkills();
+        List<CandidateSkill> candidateSkill = cm.getCandidateSkill(canId);
+        mv.addObject("jobSkills", jobSkills);
+        mv.addObject("jobs", jobsDTOS);
+        mv.addObject("candidate", candidate);
+        mv.addObject("candidateSkills", candidateSkill);
         return mv;
     }
 

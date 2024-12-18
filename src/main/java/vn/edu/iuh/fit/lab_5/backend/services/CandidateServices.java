@@ -5,6 +5,7 @@ import org.springframework.data.domain.*;
 import org.springframework.stereotype.Service;
 import vn.edu.iuh.fit.lab_5.backend.dtos.AddressDTO;
 import vn.edu.iuh.fit.lab_5.backend.dtos.CandidateDTO;
+import vn.edu.iuh.fit.lab_5.backend.dtos.JobDTO;
 import vn.edu.iuh.fit.lab_5.backend.exceptions.EntityIdNotFoundException;
 import vn.edu.iuh.fit.lab_5.backend.models.Address;
 import vn.edu.iuh.fit.lab_5.backend.models.Candidate;
@@ -15,6 +16,7 @@ import vn.edu.iuh.fit.lab_5.backend.repositories.CandidateRepository;
 import vn.edu.iuh.fit.lab_5.backend.repositories.CandidateSkillRepository;
 import vn.edu.iuh.fit.lab_5.backend.repositories.ExperienceRepository;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -106,5 +108,30 @@ public class CandidateServices {
         List<Experience> results = new ArrayList<>();
         er.findByCandidate_Id(canId).iterator().forEachRemaining(results::add);
         return results;
+    }
+
+    public List<JobDTO> getJobsForCandidate(Long candidateId) {
+        List<Object[]> results = cr.findMatchingJobs(candidateId);
+        List<JobDTO> jobs = new ArrayList<>();
+
+        for (Object[] result : results) {
+            Long jobId = (Long) result[0];
+            String jobName = (String) result[1];
+            String jobDesc = (String) result[2];
+            Long matchingSkills = (Long) result[3];
+
+            Object matchingPercentageObj = result[4];
+            Double matchingPercentage = null;
+
+            if (matchingPercentageObj instanceof BigDecimal) {
+                matchingPercentage = ((BigDecimal) matchingPercentageObj).doubleValue();
+            } else if (matchingPercentageObj instanceof Double) {
+                matchingPercentage = (Double) matchingPercentageObj;
+            }
+
+            JobDTO jobDTO = new JobDTO(jobId, jobName, jobDesc, matchingSkills, matchingPercentage);
+            jobs.add(jobDTO);
+        }
+        return jobs;
     }
 }

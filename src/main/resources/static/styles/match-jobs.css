@@ -1,0 +1,155 @@
+/* Cơ bản cho toàn bộ trang */
+body {
+    background-color: #f0f8ff;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #333;
+    margin: 0;
+    padding: 0;
+}
+
+/* Cấu trúc Container */
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 50px 0;
+}
+
+/* Tiêu đề */
+h1 {
+    font-size: 2.5rem;
+    color: #213A58;
+    text-align: center;
+    font-weight: 700;
+    margin-bottom: 40px;
+}
+
+h3 {
+    font-size: 1.5rem;
+    color: #444;
+    margin-bottom: 20px;
+}
+
+/* Phần thông tin của ứng viên */
+.candidate-info {
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    margin-bottom: 30px;
+}
+
+.candidate-info h3 {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: #333;
+}
+
+.candidate-info p {
+    margin-bottom: 10px;
+    font-size: 1rem;
+}
+
+.skill-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 10px;
+}
+
+.skill-badge {
+    background-color: #e7f1ff;
+    color: black;
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    transition: background-color 0.3s ease;
+}
+
+.skill-badge:hover {
+    background-color: #213A58;
+    color: #fff;
+}
+
+/* Các công việc phù hợp */
+.job-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+}
+
+.job-card {
+    width: calc(33.33% - 30px);
+    background-color: #fff;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    overflow: hidden;
+    transition: transform 0.3s ease;
+}
+
+.job-card:hover {
+    transform: translateY(-10px);
+}
+
+.job-card-header {
+    background-color: #0056b3;
+    color: #fff;
+    padding: 20px;
+    font-weight: 600;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.job-card-header h5 {
+    font-size: 1.1rem;
+    margin: 0;
+}
+
+.job-card-header .badge {
+    background-color: #ff3814;
+    color: #fff;
+    padding: 5px 12px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    border-radius: 20px;
+}
+
+.job-card-body {
+    padding: 20px;
+    font-size: 1rem;
+}
+
+.job-card-footer {
+    padding: 15px;
+    background-color: #f8f9fa;
+    text-align: right;
+}
+
+.job-card-footer .btn {
+    background-color: #213A58;
+    color: #fff;
+    padding: 10px 20px;
+    font-weight: 600;
+    border-radius: 5px;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+}
+
+.job-card-footer .btn:hover {
+    background-color: #0056b3;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .job-card {
+        width: calc(50% - 30px);
+    }
+}
+
+@media (max-width: 480px) {
+    .job-card {
+        width: 100%;
+    }
+}

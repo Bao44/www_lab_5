@@ -13,6 +13,27 @@ import java.util.Optional;
 public interface CandidateRepository extends JpaRepository<Candidate, Long> {
     Optional<Candidate> findByEmailAndPassword(String email, String password);
 
+    @Query(value = "SELECT " +
+            "j.job_id, " +
+            "j.job_name, " +
+            "j.job_desc, " +
+            "COUNT(DISTINCT js.skill_id) AS matching_skills, " +
+            "COUNT(DISTINCT js.skill_id) * 100 / ( " +
+            "SELECT COUNT(DISTINCT cs.skill_id) " +
+            "FROM candidate_skill cs " +
+            "WHERE cs.can_id = :candidateId) AS matching_percentage " +
+            "FROM job j " +
+            "JOIN job_skill js ON j.job_id = js.job_id " +
+            "JOIN candidate_skill cs ON js.skill_id = cs.skill_id " +
+            "WHERE cs.can_id = :candidateId " +
+            "AND cs.skill_level >= js.skill_level " +
+            "GROUP BY j.job_id " +
+            "HAVING matching_percentage > 0 " +
+            "ORDER BY matching_percentage DESC",
+            nativeQuery = true)  // sử dụng nativeQuery để chạy câu lệnh SQL gốc
+    List<Object[]> findMatchingJobs(@Param("candidateId") Long candidateId);
+
+
     @Query(value = "SELECT c.id, c.full_name, c.email, " +
             "COUNT(DISTINCT cs.skill_id) AS matching_skills, " +
             "COUNT(DISTINCT cs.skill_id) * 100 / ( " +
@@ -29,4 +50,8 @@ public interface CandidateRepository extends JpaRepository<Candidate, Long> {
             "ORDER BY matching_percentage DESC",
             nativeQuery = true)  // sử dụng nativeQuery để chạy câu lệnh SQL gốc
     List<Object[]> findCandidatesByJobSkills(@Param("jobId") Long jobId);  // Truyền job_id làm tham số
+
+
+
+
 }

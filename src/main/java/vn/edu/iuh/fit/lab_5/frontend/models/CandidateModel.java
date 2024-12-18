@@ -9,6 +9,7 @@ import org.springframework.web.client.RestTemplate;
 import org.springframework.web.util.UriComponentsBuilder;
 import vn.edu.iuh.fit.lab_5.backend.dtos.AddressDTO;
 import vn.edu.iuh.fit.lab_5.backend.dtos.CandidateDTO;
+import vn.edu.iuh.fit.lab_5.backend.dtos.JobDTO;
 import vn.edu.iuh.fit.lab_5.backend.models.*;
 
 import java.net.URI;
@@ -99,5 +100,11 @@ public class CandidateModel {
     public boolean getSendEmail() {
         Response response = rt.getForObject(URI.create(uri + "/send-email"), Response.class);
         return mapper.convertValue(response.getData(), Boolean.class);
+    }
+
+    public List<JobDTO> getJobsMatchCandidate(Long canId) {
+        Response response = rt.getForObject(URI.create(uri  + canId + "/jobs-match-candidate"), Response.class);
+        return mapper.convertValue(response.getData(), new TypeReference<List<JobDTO>>() {
+        });
     }
 }

@@ -9,6 +9,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import vn.edu.iuh.fit.lab_5.backend.dtos.CandidateAccountDTO;
 import vn.edu.iuh.fit.lab_5.backend.dtos.CandidateDTO;
+import vn.edu.iuh.fit.lab_5.backend.dtos.JobDTO;
 import vn.edu.iuh.fit.lab_5.backend.exceptions.EntityIdNotFoundException;
 import vn.edu.iuh.fit.lab_5.backend.models.Candidate;
 import vn.edu.iuh.fit.lab_5.backend.models.Response;
@@ -179,6 +180,23 @@ public class CandidateResources implements IManagement<Candidate, Long> {
                 HttpStatus.OK.value(),
                 "Get all candidate experiences successfully",
                 cs.getCandidateExperience(canId)
+        ));
+    }
+
+    @GetMapping("/{canId}/jobs-match-candidate")
+    public ResponseEntity<Response> getJobsMatchCandidate(@PathVariable Long canId) {
+        log.info("Calling get jobs match candidate by canId = " + canId);
+        List<JobDTO> jobsDTO;
+        if (canId != null) {
+            jobsDTO = cs.getJobsForCandidate(canId);
+        } else {
+            jobsDTO = null;
+        }
+        System.out.println("jobs after match candidate: " + jobsDTO.size());
+        return ResponseEntity.ok(new Response(
+                HttpStatus.OK.value(),
+                "Get jobs match candidate successfully",
+                jobsDTO
         ));
     }
 }
