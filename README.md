@@ -59,14 +59,16 @@
 
 ## Chức năng
 
-### 1. Ứng viên
+### 1. Người dùng khách
 - Đăng ký/Đăng nhập
 - Xem và tìm các bài tuyển dụng
+  
+### 2. Ứng viên
 - Gợi ý các công việc phù hợp với kỹ năng
 - Cập nhật trang cá nhân
 - Ứng tuyển công việc
 
-### 2. Công ty
+### 3. Công ty
 - Đăng ký/Đăng nhập
 - Đăng bài tuyển dụng
 - Xem và tìm kiếm ứng viên
