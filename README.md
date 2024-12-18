@@ -59,14 +59,16 @@
 
 ## Chức năng
 
-### 1. Ứng viên
+### 1. Người dùng khách
 - Đăng ký/Đăng nhập
 - Xem và tìm các bài tuyển dụng
+  
+### 2. Ứng viên
 - Gợi ý các công việc phù hợp với kỹ năng
 - Cập nhật trang cá nhân
 - Ứng tuyển công việc
 
-### 2. Công ty
+### 3. Công ty
 - Đăng ký/Đăng nhập
 - Đăng bài tuyển dụng
 - Xem và tìm kiếm ứng viên
@@ -98,23 +100,27 @@
 
  4. Đăng nhập với tư cách `ứng viên`
     
-    4.1 Giao diện của ứng viên, hiển thị trước các công việc phù hợp với kỹ năng mình có
+    4.1 Giao diện của ứng viên, hiển thị các công việc đang cần tuyển
 
-    ![Screenshot 2024-12-16 144408](https://github.com/user-attachments/assets/4b05441a-e10f-419d-92c0-9fc43bb101a8)
+    ![Screenshot 2024-12-18 142826](https://github.com/user-attachments/assets/044a0e85-afec-4736-8a18-f87d310f8f46)
+
+    4.2 Khi vào `Công việc phù hợp` sẽ hiển thị các công việc phù hợp với kỹ năng, trình độ mình có
+
+    ![Screenshot 2024-12-18 142625](https://github.com/user-attachments/assets/7a63366f-d06f-4999-b80d-4dacb94f7fd5)
     
-    4.2 Giao diện cá nhân gồm có các `thông tin cá nhân`, `kỹ năng`, `kinh nghiệm `
+    4.3 Giao diện cá nhân gồm có các `thông tin cá nhân`, `kỹ năng`, `kinh nghiệm `
 
     ![Screenshot 2024-12-16 144524](https://github.com/user-attachments/assets/2ead4659-b95c-4cea-aae4-74e5d1145966)
 
-    4.3 Thêm kỹ năng
+    4.4 Thêm kỹ năng
     
     ![Screenshot 2024-12-16 144603](https://github.com/user-attachments/assets/67f7af44-1b7f-4970-8f9e-1451db9ff2a4)
 
-    4.4 Cập nhật thông tin
+    4.5 Cập nhật thông tin
 
     ![Screenshot 2024-12-16 144725](https://github.com/user-attachments/assets/45c9a599-5fa1-4cfc-9782-917efa06bff0)
 
-    4.5 Tìm kiếm công việc khi nhập vào `UI/UX Designer` và nhấn tìm
+    4.6 Tìm kiếm công việc khi nhập vào `UI/UX Designer` và nhấn tìm
 
     ![Screenshot 2024-12-16 144804](https://github.com/user-attachments/assets/d34457ef-0957-494b-96c3-0e124db7a58e)
 
@@ -122,7 +128,7 @@
     
     ![Screenshot 2024-12-16 144902](https://github.com/user-attachments/assets/bd92d87c-4f67-4b1b-85c8-5bcdbd570fa8)
 
-    `Vẫn còn 1 số chức năng sẽ bổ sung thêm`
+    `Vẫn sẽ cập nhật thêm một vài chức năng mới`
 
 ---
 
@@ -168,5 +174,5 @@
 
     ![Screenshot 2024-12-17 030538](https://github.com/user-attachments/assets/6c860cd9-3147-4b71-8f11-b7fe3a833a0a)
 
-    `Vẫn còn 1 số chức năng chưa hoàn thành` 
+    `Vẫn sẽ cập nhật thêm 1 vài chức năng mới` 
     
